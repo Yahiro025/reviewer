@@ -1,0 +1,572 @@
+.arena {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ── Top Bar ─────────────────────────────────────────────────────── */
+.topBar {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  background: #0d0d0d;
+  border-bottom: 1px solid var(--border);
+  padding: 0 1rem;
+  gap: 1rem;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: var(--text);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.logoDot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-solid);
+  display: inline-block;
+}
+
+.fileTabs {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+  flex: 1;
+}
+
+.fileTabActive {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--border);
+  border-bottom: 2px solid var(--accent-solid);
+  background: var(--bg);
+}
+
+.topBarRight {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.resetBtn {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: #666;
+  padding: 0.3rem 0.75rem;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.resetBtn:hover {
+  color: var(--text);
+  border-color: #666;
+}
+
+.runButton {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  background: var(--accent-solid);
+  color: #000;
+  border: none;
+  padding: 0.35rem 1.1rem;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.runButton:hover {
+  opacity: 0.85;
+}
+
+.runButton:disabled,
+.runButton.running {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.stopButton {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  background: #ff2200;
+  color: #fff;
+  border: none;
+  padding: 0.35rem 1.1rem;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.stopButton:hover {
+  opacity: 0.85;
+}
+
+/* ── Body Layout ─────────────────────────────────────────────────── */
+.body {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────────── */
+.sidebar {
+  background: #0a0a0a;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebarInner {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  scrollbar-width: thin;
+  scrollbar-color: #222 transparent;
+}
+
+.sidebarHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.tierBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  border: 1px solid;
+  padding: 0.2rem 0.55rem;
+  width: fit-content;
+}
+
+.tierDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.topicLabel {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: #555;
+}
+
+.challengeTitle {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  color: var(--text);
+  margin: 0;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+}
+
+.instrLabel {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: var(--accent-solid);
+  margin-bottom: 0.4rem;
+}
+
+.instrText {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #bbb;
+}
+
+.expectedBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.expectedOutput {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #aaa;
+  background: #111;
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.75rem;
+  overflow-x: auto;
+  line-height: 1.6;
+  white-space: pre;
+  margin: 0;
+}
+
+.hintToggle {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: #666;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.15s;
+}
+
+.hintToggle:hover {
+  color: var(--text);
+}
+
+.hintBox {
+  background: #111;
+  border: 1px solid #333;
+  border-left: 2px solid var(--accent-solid);
+  padding: 0.75rem;
+  font-size: 0.78rem;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+.stdinBox {
+  width: 100%;
+  background: #111;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.5rem;
+  resize: vertical;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.stdinBox:focus {
+  border-color: var(--accent-solid);
+}
+
+.sidebarFooter {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.completedBadge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: #00e676;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid #00e67644;
+  background: #00e67609;
+  width: fit-content;
+}
+
+.backLink {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: #555;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.backLink:hover {
+  color: var(--text);
+}
+
+/* ── Workspace ───────────────────────────────────────────────────── */
+.workspace {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.editorContainer {
+  flex: 1;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Terminal ────────────────────────────────────────────────────── */
+.terminalContainer {
+  height: 220px;
+  background: #0d0d0d;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.4rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: #111;
+  flex-shrink: 0;
+}
+
+.terminalHeader > span:first-child {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: #666;
+}
+
+.terminalCmd {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #444;
+  flex: 1;
+}
+
+.statusBadge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0;
+}
+
+.terminalOutput {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #222 transparent;
+}
+
+.prompt {
+  color: var(--accent-solid);
+  margin-right: 0.5rem;
+  font-family: var(--font-mono);
+}
+
+.outputText {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: #ccc;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin: 0.25rem 0 0;
+}
+
+.idle {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #444;
+}
+
+.idle kbd {
+  font-family: var(--font-mono);
+  background: #222;
+  border: 1px solid #333;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.7rem;
+  color: #888;
+}
+
+.running {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent-solid);
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ── Next CTA ────────────────────────────────────────────────────── */
+.nextCta {
+  padding: 0.6rem 1rem;
+  background: #00e67608;
+  border-top: 1px solid #00e67622;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.nextCta p {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #00e676;
+}
+
+.nextBtn {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: #000;
+  background: #00e676;
+  padding: 0.35rem 0.85rem;
+  text-decoration: none;
+  font-weight: 700;
+  transition: opacity 0.15s;
+}
+
+.nextBtn:hover {
+  opacity: 0.85;
+}
+
+/* ── Success Overlay ────────────────────────────────────────────────── */
+.successOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(4, 4, 4, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+}
+
+.successModal {
+  background: var(--bg-secondary);
+  border: 1px solid #00e676;
+  padding: 2.5rem;
+  max-width: 480px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 0 40px rgba(0, 230, 118, 0.12);
+}
+
+/* Cyberpunk corner brackets */
+.successModal::before,
+.successModal::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #00e676;
+}
+
+.successModal::before {
+  top: 6px;
+  left: 6px;
+}
+
+.successModal::after {
+  bottom: 6px;
+  right: 6px;
+}
+
+.successTitle {
+  font-family: var(--font-heading);
+  color: #00e676;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.4rem;
+  text-shadow: 0 0 12px rgba(0, 230, 118, 0.25);
+}
+
+.successSubtitle {
+  font-family: var(--font-mono);
+  color: #555;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+.successStats {
+  background: #050505;
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #888;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+  border-left: 2px solid #00e676;
+}
+
+.successRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.successRowText {
+  color: #00e676;
+}
+
+.successActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.actionBtnPrimary {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: #000;
+  background: #00e676;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.actionBtnPrimary:hover {
+  opacity: 0.85;
+}
+
+.actionBtnSecondary {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: #666;
+  background: transparent;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.actionBtnSecondary:hover {
+  color: var(--text);
+  border-color: #555;
+}

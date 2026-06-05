@@ -1,0 +1,265 @@
+.page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Nav ─────────────────────────────────────────────────────────── */
+.nav {
+  padding: 0.8rem 2rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logoDot {
+  width: 9px;
+  height: 9px;
+  background: var(--accent-solid);
+  display: inline-block;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+}
+
+.userBtn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: #666;
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.userBtn:hover {
+  color: var(--text);
+  border-color: #555;
+}
+
+.nameEditor {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.nameInput {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  background: #111;
+  border: 1px solid var(--accent-solid);
+  color: var(--text);
+  padding: 0.3rem 0.6rem;
+  outline: none;
+  width: 160px;
+}
+
+.nameSave {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  background: var(--accent-solid);
+  color: #000;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.nameCancel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  background: transparent;
+  color: #666;
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+}
+
+/* ── Header ──────────────────────────────────────────────────────── */
+.header {
+  padding: 2.5rem 2rem 2rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.headerLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--accent-solid);
+}
+
+.headerTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.welcomeMsg {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0;
+  font-family: var(--font-mono);
+}
+
+.headerRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+  min-width: 160px;
+}
+
+.bigStat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.1rem;
+}
+
+.bigNum {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--accent-solid);
+  line-height: 1;
+}
+
+.bigDenom {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: #555;
+}
+
+.statLabel {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: #555;
+  margin: 0;
+}
+
+.globalBar {
+  width: 100%;
+  height: 3px;
+  background: #1e1e1e;
+  margin-top: 0.2rem;
+}
+
+.globalFill {
+  height: 100%;
+  background: var(--accent-solid);
+  transition: width 0.6s ease;
+}
+
+/* ── Grid ────────────────────────────────────────────────────────── */
+.grid {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1px;
+  background: var(--border);
+}
+
+.card {
+  background: var(--bg);
+  padding: 1.5rem;
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: background 0.2s;
+  border: none;
+}
+
+.card:hover {
+  background: #0e0e0e;
+}
+
+.card.cardDone {
+  background: #0a0a0a;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topicNumber {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #444;
+  letter-spacing: 0.08em;
+}
+
+.cardStatus {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--accent-solid);
+  letter-spacing: 0.08em;
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.progressContainer {
+  height: 2px;
+  background: #1e1e1e;
+}
+
+.progressBar {
+  height: 100%;
+  background: var(--accent-solid);
+  transition: width 0.6s ease;
+}
+
+.tierDots {
+  display: flex;
+  gap: 4px;
+  margin-top: 0.25rem;
+}
+
+.tierDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
