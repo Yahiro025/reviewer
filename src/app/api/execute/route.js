@@ -43,10 +43,9 @@ export async function POST(request) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        compiler: "gcc-head",
+        compiler: "gcc-head-c",
         code,
         stdin,
-        "compiler-option-raw": "-Wall -Wextra",
       }),
       signal: controller.signal,
     });
