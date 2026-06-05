@@ -77,25 +77,28 @@ int main() {
       },
       expert: {
         id: "arrays-expert",
-        title: "Student Grade Analyzer",
-        description: "Accept grades for 5 students in an array. The program must: (1) Compute the class average, (2) Find and print the highest and lowest grades, (3) Print a frequency count for grade ranges: 90-100, 80-89, 70-79, below 70.",
+        title: "Class Performance Analyzer",
+        description: "You are building an academic performance tool. Given an array of 8 student grades, implement the following in separate logical sections: (1) Compute and display the class average (2 decimal places), (2) Identify and display the highest and lowest grades with their positions (1-based index), (3) Generate a frequency distribution by grade range: A (90-100), B (80-89), C (70-79), D (60-69), F (below 60), (4) Count how many students scored above the average. Display all results with clear labels.",
         starterCode: `#include <stdio.h>
 
 int main() {
-    int grades[5] = {95, 82, 70, 88, 61};
-    float avg = 0;
-    int highest, lowest;
-    int a = 0, b = 0, c = 0, f = 0; // Grade range counters
+    int grades[8] = {95, 82, 70, 88, 61, 78, 93, 55};
+    int n = 8;
+    float sum = 0, avg;
+    int highest, lowest, highPos, lowPos;
+    int a = 0, b = 0, c = 0, d = 0, f = 0;
+    int aboveAvg = 0;
 
-    // TODO: Compute average
-    // TODO: Find highest and lowest
-    // TODO: Count grade ranges
-    // TODO: Print all results
+    // TODO: Compute sum and average
+    // TODO: Find highest and lowest with positions
+    // TODO: Count frequency per grade range
+    // TODO: Count students above average
+    // TODO: Print all results with clear labels
 
     return 0;
 }`,
-        expectedOutput: "Average: 79.20\nHighest: 95\nLowest: 61\n90-100: 1\n80-89: 2\n70-79: 1\nBelow 70: 1",
-        hint: "Use a single loop to compute average, find min/max, and count ranges simultaneously.",
+        expectedOutput: "Class Average: 77.75\nHighest: 95 (Student 1)\nLowest: 55 (Student 8)\n--- Grade Distribution ---\nA (90-100): 2\nB (80-89): 2\nC (70-79): 2\nD (60-69): 1\nF (Below 60): 1\nStudents Above Average: 4",
+        hint: "Track positions using the loop index when updating highest/lowest. Use if-else chains for grade ranges.",
       },
     },
   },
@@ -262,22 +265,23 @@ int main() {
       },
       expert: {
         id: "conditionals-expert",
-        title: "Simple Calculator",
-        description: "Build a calculator that reads two numbers and an operator (+, -, *, /). Perform the operation and print the result. Handle division by zero and invalid operators gracefully.",
+        title: "Advanced Calculator with Menu",
+        description: "Build a menu-driven calculator program with the following operations: (1) Addition, (2) Subtraction, (3) Multiplication, (4) Division, (5) Modulus (integers only), (6) Power (using a loop, no math.h). The program must: accept two numbers, perform the selected operation, handle division by zero, modulus by zero, and invalid choices gracefully, and loop until the user selects option 7 (Exit). Display results with 2 decimal places.",
         starterCode: `#include <stdio.h>
 
 int main() {
+    int choice;
     float a, b, result;
-    char op;
-    scanf("%f %c %f", &a, &op, &b);
+    int ia, ib, iresult;
 
-    // TODO: Perform operation based on op
-    // TODO: Handle division by zero and invalid operator
+    // TODO: Display menu in a loop
+    // TODO: Read two numbers and perform operation
+    // TODO: Handle division by zero and invalid choices
 
     return 0;
 }`,
-        expectedOutput: "Result: 7.50",
-        hint: "Use a switch on the char operator. For division, check if b == 0 first.",
+        expectedOutput: "Result: 7.50\nResult: 12\nExiting calculator.",
+        hint: "Use a do-while loop for the menu. For power, use a for-loop multiplying a by itself b times. Use a switch for operation selection.",
       },
     },
   },
@@ -353,23 +357,28 @@ int main() {
       expert: {
         id: "functions-expert",
         title: "Bank ATM Simulator",
-        description: "Build a menu-driven ATM. Implement checkBalance(), deposit(float amount), and withdraw(float amount) functions. The menu loops until the user selects 'Exit'. Handle insufficient funds.",
+        description: "Build a complete menu-driven ATM system. Implement the following functions: (1) checkBalance() — display current balance, (2) deposit(float amount) — add funds and confirm, (3) withdraw(float amount) — deduct funds if sufficient, print error if not, (4) printMiniStatement() — show the last 3 transactions stored in global arrays. The main menu must loop until the user selects 'Exit'. Transaction history must be tracked automatically.",
         starterCode: `#include <stdio.h>
 
 float balance = 1000.00;
+char transactions[3][50] = {"", "", ""};
+int txnCount = 0;
 
+void addTransaction(char *desc) { /* TODO: Shift old entries and add new */ }
 void checkBalance() { /* TODO */ }
-void deposit(float amount) { /* TODO */ }
-void withdraw(float amount) { /* TODO */ }
+void deposit(float amount) { /* TODO: Add to balance and record txn */ }
+void withdraw(float amount) { /* TODO: Check funds, deduct, record txn */ }
+void printMiniStatement() { /* TODO: Print last 3 transactions */ }
 
 int main() {
     int choice;
     float amount;
-    // TODO: Implement menu loop
+    // TODO: Display menu (1:Balance 2:Deposit 3:Withdraw 4:Statement 5:Exit)
+    // TODO: Loop until choice == 5
     return 0;
 }`,
-        expectedOutput: "Balance: 1000.00\nDeposit 500.00: Balance 1500.00\nWithdraw 200.00: Balance 1300.00",
-        hint: "Use a do-while loop for the menu. Check balance >= amount before withdrawing.",
+        expectedOutput: "Deposit 500.00: Balance 1500.00\nWithdraw 200.00: Balance 1300.00\n--- Mini Statement ---\n1. Deposited: 500.00\n2. Withdrew: 200.00",
+        hint: "Use a do-while loop for the menu. For transactions, shift elements down: txn[2]=txn[1], txn[1]=txn[0], then txn[0]=new.",
       },
     },
   },
@@ -436,42 +445,58 @@ int main() {
       },
       advanced: {
         id: "pointers-advanced",
-        title: "Find Max via Pointer",
-        description: "Write a function findMax(int *arr, int size) that returns a pointer to the largest element in the array. In main, print the max value by dereferencing the returned pointer.",
+        title: "Find Max & Min via Pointers",
+        description: "Write a function findMinMax(int *arr, int size, int *min, int *max) that finds both the minimum and maximum values in an array using pointers (pass-by-reference for min and max). Also write a function getAverage(int *arr, int size) that returns the average using pointer traversal. In main, print the min, max, and average.",
         starterCode: `#include <stdio.h>
 
-int* findMax(int *arr, int size) {
-    // TODO: Find and return pointer to max element
+void findMinMax(int *arr, int size, int *min, int *max) {
+    // TODO: Find min and max via pointer traversal
+}
+
+float getAverage(int *arr, int size) {
+    // TODO: Compute average using pointer traversal
 }
 
 int main() {
     int arr[6] = {3, 7, 1, 9, 4, 6};
-    int *maxPtr = findMax(arr, 6);
-    printf("Max: %d\\n", *maxPtr);
+    int min, max;
+    findMinMax(arr, 6, &min, &max);
+    float avg = getAverage(arr, 6);
+    printf("Min: %d\\n", min);
+    printf("Max: %d\\n", max);
+    printf("Average: %.2f\\n", avg);
     return 0;
 }`,
-        expectedOutput: "Max: 9",
-        hint: "Start with int *max = arr; then loop comparing *max with *(arr+i).",
+        expectedOutput: "Min: 1\nMax: 9\nAverage: 5.00",
+        hint: "Start with *min = *max = arr[0]. Use pointer arithmetic *(arr+i) to compare each element.",
       },
       expert: {
         id: "pointers-expert",
-        title: "Dynamic String Reversal",
-        description: "Write a function reverseString(char *str) that reverses a string in-place using pointer arithmetic (no array indexing). In main, reverse and print the string 'CLABS'.",
+        title: "String Utilities via Pointers",
+        description: "Build a string utility library using only pointer arithmetic (no array indexing). Implement three functions: (1) reverseString(char *str) — reverse in-place, (2) countVowels(char *str) — return the number of vowels (case-insensitive), (3) toUpperCase(char *str) — convert all letters to uppercase in-place. In main, demonstrate all three functions on the string 'Programming'.",
         starterCode: `#include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
-void reverseString(char *str) {
-    // TODO: Reverse string in-place using pointers
-}
+void reverseString(char *str) { /* TODO: Reverse in-place using pointers */ }
+int countVowels(char *str) { /* TODO: Count a,e,i,o,u using pointer traversal */ }
+void toUpperCase(char *str) { /* TODO: Convert in-place using pointers */ }
 
 int main() {
-    char word[] = "CLABS";
-    reverseString(word);
-    printf("%s\\n", word);
+    char word[] = "Programming";
+    char reversed[50];
+    strcpy(reversed, word);
+    reverseString(reversed);
+    printf("Reversed: %s\\n", reversed);
+
+    printf("Vowels: %d\\n", countVowels(word));
+
+    toUpperCase(reversed);
+    printf("Uppercase: %s\\n", reversed);
     return 0;
 }`,
-        expectedOutput: "SBALC",
-        hint: "Use a char *start = str and char *end = str + strlen(str) - 1, then swap while start < end.",
+        expectedOutput: "Reversed: gnimmargorP\nVowels: 3\nUppercase: GNIMMARGORP",
+        hint: "For reverse: char *start=str, *end=str+strlen(str)-1, swap while start<end. For vowels, check each char with *(ptr++) against 'aeiouAEIOU'.",
       },
     },
   },
@@ -531,73 +556,85 @@ int main() {
       },
       advanced: {
         id: "structures-advanced",
-        title: "Student Database System",
-        description: "Create a Student structure with name (char[50]), studentNumber (char[20]), age (int), and an array of 3 float grades. For an array of 5 students (hardcoded), write a function that calculates each student's average and another that finds and prints the top performer's full details.",
+        title: "Sports Team Manager",
+        description: "Create an Athlete structure with fields: name (char[50]), jerseyNumber (int), sport (char[30]), and an array of 3 float scores. For an array of 5 athletes (hardcoded), implement the following: (1) calcAverages() — compute each athlete's average score, (2) findMVP() — find and display the athlete with the highest average (print all their details), (3) displayAll() — print a formatted table of all athletes with their averages. The output must match the expected format exactly.",
         starterCode: `#include <stdio.h>
 
 typedef struct {
     char name[50];
-    char studentNumber[20];
-    int age;
-    float grades[3];
+    int jerseyNumber;
+    char sport[30];
+    float scores[3];
     float average;
-} Student;
+} Athlete;
 
-void calcAverages(Student students[], int n) {
-    // TODO: Calculate average for each student
+void calcAverages(Athlete team[], int n) {
+    // TODO: Calculate average score for each athlete
 }
 
-void printTopPerformer(Student students[], int n) {
-    // TODO: Find and print the top student
+void findMVP(Athlete team[], int n) {
+    // TODO: Find and print the top athlete's full details
+}
+
+void displayAll(Athlete team[], int n) {
+    // TODO: Print formatted table of all athletes
 }
 
 int main() {
-    Student students[5] = {
-        {"Ana Reyes", "2023-001", 19, {88, 92, 85}},
-        {"Ben Cruz", "2023-002", 20, {75, 80, 70}},
-        {"Cara Lim", "2023-003", 18, {95, 98, 100}},
-        {"Dan Sy", "2023-004", 21, {60, 65, 70}},
-        {"Eve Go", "2023-005", 19, {85, 88, 90}}
+    Athlete team[5] = {
+        {"Jordan Cruz", 23, "Basketball", {22, 28, 25}},
+        {"Alex Tan", 10, "Volleyball", {15, 18, 20}},
+        {"Sam Reyes", 7, "Basketball", {30, 26, 29}},
+        {"Jamie Lim", 14, "Swimming", {18, 22, 19}},
+        {"Casey Go", 33, "Basketball", {12, 15, 10}}
     };
-    // TODO: Call your functions
+    calcAverages(team, 5);
+    displayAll(team, 5);
+    printf("\\n");
+    findMVP(team, 5);
     return 0;
 }`,
-        expectedOutput: "Top Performer: Cara Lim (2023-003), Age: 18, Average: 97.67",
-        hint: "Loop once to calculate averages, then loop again to find the max average.",
+        expectedOutput: "--- Team Roster ---\nJordan Cruz (#23) - Basketball - Avg: 25.00\nAlex Tan (#10) - Volleyball - Avg: 17.67\nSam Reyes (#7) - Basketball - Avg: 28.33\nJamie Lim (#14) - Swimming - Avg: 19.67\nCasey Go (#33) - Basketball - Avg: 12.33\n\n=== MOST VALUABLE PLAYER ===\nSam Reyes (#7), Sport: Basketball, Average: 28.33",
+        hint: "Loop once to calculate sum/3 for averages, then loop again to find the max average. For display, use printf with formatted columns.",
       },
       expert: {
         id: "structures-expert",
-        title: "Library Catalog System",
-        description: "Create a Book structure (title, author, year, float price, int quantity). Using an array of 5 books, implement functions to: (1) Display all books, (2) Search for a book by title, (3) Calculate total inventory value (price * quantity for all books), (4) Find the most expensive book.",
+        title: "Personal Finance Tracker",
+        description: "Build a finance tracking system using a Transaction structure with fields: date (char[11], format 'YYYY-MM-DD'), description (char[50]), category (char[20]), and amount (float, positive=income, negative=expense). Using an array of up to 6 hardcoded transactions, implement functions to: (1) displayAllTransactions() — print a formatted list, (2) computeNetBalance() — return total income minus total expenses, (3) filterByCategory(char *cat) — display only transactions of a given category, (4) findLargestExpense() — display the single largest expense transaction.",
         starterCode: `#include <stdio.h>
 #include <string.h>
 
 typedef struct {
-    char title[100];
-    char author[50];
-    int year;
-    float price;
-    int quantity;
-} Book;
+    char date[11];
+    char description[50];
+    char category[20];
+    float amount; // positive = income, negative = expense
+} Transaction;
 
-void displayAll(Book books[], int n) { /* TODO */ }
-void searchByTitle(Book books[], int n, char *query) { /* TODO */ }
-float totalValue(Book books[], int n) { /* TODO */ }
-void mostExpensive(Book books[], int n) { /* TODO */ }
+void displayAll(Transaction txns[], int n) { /* TODO: Print formatted list */ }
+float computeNetBalance(Transaction txns[], int n) { /* TODO: Sum all amounts */ }
+void filterByCategory(Transaction txns[], int n, char *cat) { /* TODO */ }
+void findLargestExpense(Transaction txns[], int n) { /* TODO */ }
 
 int main() {
-    Book books[5] = {
-        {"The C Programming Language", "Kernighan", 1978, 850.00, 3},
-        {"Clean Code", "Martin", 2008, 1200.00, 2},
-        {"SICP", "Abelson", 1996, 980.00, 1},
-        {"Pragmatic Programmer", "Hunt", 1999, 1100.00, 4},
-        {"Code Complete", "McConnell", 2004, 750.00, 2}
+    Transaction txns[6] = {
+        {"2025-01-15", "Salary", "Income", 50000.00},
+        {"2025-01-16", "Rent Payment", "Housing", -15000.00},
+        {"2025-01-17", "Groceries", "Food", -3500.50},
+        {"2025-01-18", "Freelance", "Income", 8000.00},
+        {"2025-01-19", "Restaurant", "Food", -1200.00},
+        {"2025-01-20", "Electric Bill", "Housing", -2800.00}
     };
-    // TODO: Call all functions
+    displayAll(txns, 6);
+    printf("\nNet Balance: %.2f\n", computeNetBalance(txns, 6));
+    printf("\n--- Food Transactions ---\n");
+    filterByCategory(txns, 6, "Food");
+    printf("\n--- Largest Expense ---\n");
+    findLargestExpense(txns, 6);
     return 0;
 }`,
-        expectedOutput: "Total Inventory Value: 14750.00\nMost Expensive: Clean Code at 1200.00",
-        hint: "For search, use strcmp() or strstr() to compare strings.",
+        expectedOutput: "2025-01-15 | Salary           | Income      | +50000.00\n2025-01-16 | Rent Payment      | Housing     | -15000.00\n2025-01-17 | Groceries         | Food        |  -3500.50\n2025-01-18 | Freelance         | Income      |  +8000.00\n2025-01-19 | Restaurant        | Food        |  -1200.00\n2025-01-20 | Electric Bill     | Housing     |  -2800.00\n\nNet Balance: 35500.50\n\n--- Food Transactions ---\n2025-01-17 | Groceries         | Food        |  -3500.50\n2025-01-19 | Restaurant        | Food        |  -1200.00\n\n--- Largest Expense ---\nRent Payment: -15000.00",
+        hint: "For filterByCategory, use strcmp(). For largest expense, only check transactions where amount < 0. Use strcmp() for category matching.",
       },
     },
   },
@@ -778,62 +815,87 @@ int main() {
       },
       advanced: {
         id: "struct-arrays-advanced",
-        title: "Employee Payroll System",
-        description: "Create an Employee structure (id, name, department, float salary). With 5 hardcoded employees, implement: displayAll(), findByID(int id), updateSalary(int id, float newSalary), and computeDeptTotal(char *dept).",
+        title: "Hospital Staff Manager",
+        description: "Create a Staff structure with fields: id (int), name (char[50]), role (char[30], e.g. 'Doctor', 'Nurse', 'Admin'), and float salary. With 5 hardcoded staff members, implement functions to: (1) displayAll() — print all staff in a formatted list, (2) findByID(int id) — search and print one staff member's full details, (3) updateSalary(int id, float newSalary) — update and confirm a staff member's salary, (4) computeRoleTotal(char *role) — calculate and return the total salary for a given role. Demonstrate all functions in main.",
         starterCode: `#include <stdio.h>
 #include <string.h>
 
 typedef struct {
     int id;
     char name[50];
-    char department[30];
+    char role[30];
     float salary;
-} Employee;
+} Staff;
 
-void displayAll(Employee e[], int n) { /* TODO */ }
-void findByID(Employee e[], int n, int id) { /* TODO */ }
-void updateSalary(Employee e[], int n, int id, float newSalary) { /* TODO */ }
-float computeDeptTotal(Employee e[], int n, char *dept) { /* TODO */ }
+void displayAll(Staff s[], int n) { /* TODO: Print formatted list */ }
+void findByID(Staff s[], int n, int id) { /* TODO: Print full details */ }
+void updateSalary(Staff s[], int n, int id, float newSalary) { /* TODO */ }
+float computeRoleTotal(Staff s[], int n, char *role) { /* TODO */ }
 
 int main() {
-    Employee emps[5] = {
-        {101, "Ana Reyes", "Engineering", 55000},
-        {102, "Ben Cruz", "Marketing", 42000},
-        {103, "Cara Lim", "Engineering", 62000},
-        {104, "Dan Sy", "HR", 38000},
-        {105, "Eve Go", "Engineering", 58000}
+    Staff staff[5] = {
+        {201, "Dr. Ana Reyes", "Doctor", 85000},
+        {202, "Ben Cruz, RN", "Nurse", 45000},
+        {203, "Dr. Cara Lim", "Doctor", 92000},
+        {204, "Dan Sy", "Admin", 35000},
+        {205, "Eve Go, RN", "Nurse", 48000}
     };
-    // TODO: Demonstrate all functions
+    displayAll(staff, 5);
+    printf("\n--- Find ID 203 ---\n");
+    findByID(staff, 5, 203);
+    printf("\nDoctor Total Payroll: %.2f\n", computeRoleTotal(staff, 5, "Doctor"));
+    updateSalary(staff, 5, 204, 38000);
+    printf("\n--- After Salary Update ---\n");
+    findByID(staff, 5, 204);
     return 0;
 }`,
-        expectedOutput: "Engineering Total Payroll: 175000.00",
-        hint: "For computeDeptTotal, use strcmp(e[i].department, dept) to match.",
+        expectedOutput: "ID: 201 | Dr. Ana Reyes | Doctor | 85000.00\nID: 202 | Ben Cruz, RN | Nurse | 45000.00\nID: 203 | Dr. Cara Lim | Doctor | 92000.00\nID: 204 | Dan Sy | Admin | 35000.00\nID: 205 | Eve Go, RN | Nurse | 48000.00\n\n--- Find ID 203 ---\nDr. Cara Lim, Role: Doctor, Salary: 92000.00\n\nDoctor Total Payroll: 177000.00\n\n--- After Salary Update ---\nDan Sy, Role: Admin, Salary: 38000.00",
+        hint: "For computeRoleTotal, use strcmp(s[i].role, role). For updateSalary, loop to find matching id, then update and print confirmation.",
       },
       expert: {
         id: "struct-arrays-expert",
-        title: "Mini-ERP System",
-        description: "Build a system managing two entities: Employee (id, name, float salary) and Department (deptName, managerID). Implement: addEmployee(), listByDepartment(), computeDeptPayroll(), and applyBonus(char *dept, float bonusPct) that increases all salaries in a department by a percentage.",
+        title: "Retail Sales Tracker",
+        description: "Build a retail sales management system using a Sale structure with fields: date (char[11]), itemName (char[50]), category (char[20]), float unitPrice, and int quantity. Using arrays of structures (up to 10 hardcoded sales), implement: (1) listAllSales() — display all sales with computed total per item, (2) computeTotalRevenue() — return sum of all (unitPrice * quantity), (3) filterByCategory(char *cat) — display sales matching a category, (4) findBestSellingItem() — display the item with the highest quantity sold, (5) dailySalesReport(char *date) — show total revenue for a specific date.",
         starterCode: `#include <stdio.h>
 #include <string.h>
 
-typedef struct { int id; char name[50]; char dept[30]; float salary; } Employee;
-typedef struct { char deptName[30]; int managerID; } Department;
+typedef struct {
+    char date[11];
+    char itemName[50];
+    char category[20];
+    float unitPrice;
+    int quantity;
+} Sale;
 
-Employee employees[20];
-Department departments[5];
-int empCount = 0, deptCount = 0;
-
-void addEmployee(int id, char *name, char *dept, float salary) { /* TODO */ }
-void listByDepartment(char *dept) { /* TODO */ }
-float computeDeptPayroll(char *dept) { /* TODO */ }
-void applyBonus(char *dept, float bonusPct) { /* TODO */ }
+void listAllSales(Sale sales[], int n) { /* TODO: Print each with line total */ }
+float computeTotalRevenue(Sale sales[], int n) { /* TODO: Sum price*quantity */ }
+void filterByCategory(Sale sales[], int n, char *cat) { /* TODO */ }
+void findBestSellingItem(Sale sales[], int n) { /* TODO: Highest quantity */ }
+float dailySalesReport(Sale sales[], int n, char *date) { /* TODO */ }
 
 int main() {
-    // TODO: Add sample data, demonstrate all functions
+    Sale sales[8] = {
+        {"2025-03-01", "Laptop Pro", "Electronics", 45000.00, 2},
+        {"2025-03-01", "Mouse", "Electronics", 1200.00, 5},
+        {"2025-03-02", "Notebook", "School Supplies", 45.00, 20},
+        {"2025-03-02", "Pen Set", "School Supplies", 150.00, 15},
+        {"2025-03-03", "Keyboard", "Electronics", 2500.00, 3},
+        {"2025-03-03", "Eraser", "School Supplies", 25.00, 30},
+        {"2025-03-04", "Monitor 24\"", "Electronics", 8500.00, 1},
+        {"2025-03-04", "Backpack", "School Supplies", 1200.00, 4}
+    };
+    listAllSales(sales, 8);
+    printf("\nTotal Revenue: %.2f\n", computeTotalRevenue(sales, 8));
+    printf("\n--- Electronics ---\n");
+    filterByCategory(sales, 8, "Electronics");
+    printf("\n--- Best Selling Item ---\n");
+    findBestSellingItem(sales, 8);
+    printf("\n--- Daily Report: 2025-03-02 ---\n");
+    printf("Revenue: %.2f\n", dailySalesReport(sales, 8, "2025-03-02"));
     return 0;
 }`,
-        expectedOutput: "Engineering payroll before bonus: 175000.00\nApplying 10% bonus...\nEngineering payroll after bonus: 192500.00",
-        hint: "For applyBonus: e[i].salary *= (1 + bonusPct/100) for matching department.",
+        expectedOutput: "2025-03-01 | Laptop Pro | Electronics | 45000.00 x 2 = 90000.00\n2025-03-01 | Mouse | Electronics | 1200.00 x 5 = 6000.00\n2025-03-02 | Notebook | School Supplies | 45.00 x 20 = 900.00\n2025-03-02 | Pen Set | School Supplies | 150.00 x 15 = 2250.00\n2025-03-03 | Keyboard | Electronics | 2500.00 x 3 = 7500.00\n2025-03-03 | Eraser | School Supplies | 25.00 x 30 = 750.00\n2025-03-04 | Monitor 24\" | Electronics | 8500.00 x 1 = 8500.00\n2025-03-04 | Backpack | School Supplies | 1200.00 x 4 = 4800.00\n\nTotal Revenue: 120700.00\n\n--- Electronics ---\nLaptop Pro (45000.00 x 2 = 90000.00)\nMouse (1200.00 x 5 = 6000.00)\nKeyboard (2500.00 x 3 = 7500.00)\nMonitor 24\" (8500.00 x 1 = 8500.00)\n\n--- Best Selling Item ---\nEraser - 30 units sold\n\n--- Daily Report: 2025-03-02 ---\nRevenue: 3150.00",
+        hint: "For filterByCategory, use strcmp(). For daily report, strcmp on date. For best seller, track max quantity. Use strcpy/strcmp from string.h.",
       },
     },
   },
@@ -901,50 +963,72 @@ int main() {
       },
       advanced: {
         id: "file-handling-advanced",
-        title: "Word Frequency Counter",
-        description: "Read a text file 'input.txt' (create it first with at least 20 words). Count how many times each unique word appears. Write the results to 'frequency.txt' in the format 'word: count'.",
+        title: "Word Frequency Analyzer",
+        description: "Create a text analysis tool. First, write a sample paragraph to 'input.txt' (at least 25 words with some repeated). Then implement the following: (1) Read the file word by word, (2) Count the frequency of each unique word (case-insensitive), (3) Write the frequency results sorted alphabetically to 'frequency.txt' in the format 'word: count', (4) Print to console the total word count and the top 3 most frequent words. Ignore punctuation and convert all words to lowercase.",
         starterCode: `#include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 
 int main() {
-    // First, create a sample input.txt
+    // Create sample input
     FILE *fp = fopen("input.txt", "w");
-    fprintf(fp, "the cat sat on the mat the cat sat");
+    fprintf(fp, "the cat sat on the mat the cat sat on the chair");
     fclose(fp);
 
-    // TODO: Read input.txt, count word frequencies
-    // TODO: Write results to frequency.txt
-    // TODO: Print results to console
+    char words[100][50];
+    int counts[100] = {0};
+    int uniqueCount = 0, totalWords = 0;
+
+    // TODO: Read input.txt word by word
+    // TODO: Count frequencies (convert to lowercase, skip punctuation)
+    // TODO: Write results to frequency.txt (alphabetically sorted)
+    // TODO: Print total word count and top 3 most frequent words
 
     return 0;
 }`,
-        expectedOutput: "the: 3\ncat: 2\nsat: 2\non: 1\nmat: 1",
-        hint: "Store words in a parallel array. For each new word, check if it exists; increment count if it does.",
+        expectedOutput: "Total words: 13\nTop 3: 'the' (3), 'cat' (2), 'sat' (2)",
+        hint: "Use fscanf(fp, \"%s\", word) to read words. For each word, check if it exists in your unique words array; if so increment count, otherwise add it. Use strcasecmp() or convert to lowercase before comparing.",
       },
       expert: {
         id: "file-handling-expert",
-        title: "CSV Gradebook",
-        description: "Build a gradebook system that reads student records from a CSV file, calculates averages, appends a 'PASSED' or 'FAILED' column based on average >= 75, and writes the updated records to a new file 'gradebook_out.csv'.",
+        title: "CSV Gradebook Processor",
+        description: "Build a complete gradebook processing system. Create a CSV file 'gradebook.csv' with student records (Name, Math, Science, English scores). Implement: (1) Read all records from the CSV, (2) Compute each student's average, (3) Determine PASSED (avg >= 75) or FAILED status, (4) Write the enriched data to 'gradebook_out.csv' with columns: Name,Math,Science,English,Average,Status, (5) Print a summary to console showing: total students, number passed, number failed, and the class average of all student averages.",
         starterCode: `#include <stdio.h>
 #include <string.h>
+
+typedef struct {
+    char name[50];
+    int math, science, english;
+    float average;
+    char status[10];
+} Student;
 
 int main() {
     // Create input CSV
     FILE *fp = fopen("gradebook.csv", "w");
     fprintf(fp, "Name,Math,Science,English\\n");
-    fprintf(fp, "Ana,90,88,92\\nBen,70,65,60\\nCara,85,80,78\\n");
+    fprintf(fp, "Ana,90,88,92\\n");
+    fprintf(fp, "Ben,70,65,60\\n");
+    fprintf(fp, "Cara,85,80,78\\n");
+    fprintf(fp, "Dan,55,60,58\\n");
+    fprintf(fp, "Eve,95,92,98\\n");
     fclose(fp);
 
-    // TODO: Read gradebook.csv
-    // TODO: Calculate average for each student
-    // TODO: Write gradebook_out.csv with average and status
-    // TODO: Print final results to console
+    Student students[50];
+    int count = 0;
+    int passed = 0, failed = 0;
+    float sumAverages = 0;
+
+    // TODO: Read gradebook.csv (skip header line)
+    // TODO: Compute each student's average
+    // TODO: Set PASSED/FAILED status
+    // TODO: Write gradebook_out.csv with header
+    // TODO: Print summary to console
 
     return 0;
 }`,
-        expectedOutput: "Ana,90,88,92,90.00,PASSED\nBen,70,65,60,65.00,FAILED\nCara,85,80,78,81.00,PASSED",
-        hint: "Use fscanf with a comma format: fscanf(fp, \"%[^,],%d,%d,%d\\n\", name, &m, &s, &e);",
+        expectedOutput: "--- Gradebook Summary ---\nTotal Students: 5\nPassed: 3\nFailed: 2\nClass Average: 77.87",
+        hint: "Use fscanf with format: fscanf(fp, \"%[^,],%d,%d,%d\\n\", name, &m, &s, &e). Skip the header by reading it first. For status: strcpy(s.status, avg>=75 ? \"PASSED\" : \"FAILED\").",
       },
     },
   },

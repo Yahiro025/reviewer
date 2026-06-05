@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import styles from './dashboard.module.css';
 import challenges from '@/lib/challenges';
@@ -56,28 +56,26 @@ const cardVariants = {
 const MotionLink = motion.create(Link);
 
 export default function Dashboard() {
-  const [stats, setStats] = useState([]);
-  const [totalCompleted, setTotalCompleted] = useState(0);
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState(() => {
+    if (typeof window === 'undefined') return '';
+    return localStorage.getItem('clabs_username') || '';
+  });
   const [editingName, setEditingName] = useState(false);
-  const [nameInput, setNameInput] = useState('');
+  const [nameInput, setNameInput] = useState(() => {
+    if (typeof window === 'undefined') return '';
+    return localStorage.getItem('clabs_username') || '';
+  });
 
-  useEffect(() => {
+  // Compute stats from localStorage on mount (lazy initializer avoids setState-in-effect)
+  const [stats] = useState(() => {
+    if (typeof window === 'undefined') return [];
     const progress = getProgress();
-
-    // Compute per-topic stats
-    const computed = topicMeta.map((topic) => {
+    return topicMeta.map((topic) => {
       const { completed, total } = getTopicStats(topic.tiers);
       return { ...topic, completed, total };
     });
-    setStats(computed);
-    setTotalCompleted(computed.reduce((acc, t) => acc + t.completed, 0));
-
-    // Load username
-    const saved = localStorage.getItem('clabs_username') || '';
-    setUsername(saved);
-    setNameInput(saved);
-  }, []);
+  });
+  const totalCompleted = useMemo(() => stats.reduce((acc, t) => acc + t.completed, 0), [stats]);
 
   const saveUsername = () => {
     localStorage.setItem('clabs_username', nameInput.trim());

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import styles from './topics.module.css';
 import challenges from '@/lib/challenges';
@@ -52,11 +52,11 @@ const MotionLink = motion.create(Link);
 export default function TopicDetail() {
   const { id } = useParams();
   const topic = challenges[id];
-  const [progress, setProgress] = useState({});
-
-  useEffect(() => {
-    setProgress(getProgress());
-  }, []);
+  // Read progress synchronously from localStorage on mount (lazy initializer)
+  const [progress, setProgress] = useState(() => {
+    if (typeof window === 'undefined') return {};
+    return getProgress();
+  });
 
   if (!topic) {
     return (

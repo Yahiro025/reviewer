@@ -43,42 +43,51 @@ function getNextChallenge(topicKey, currentTier) {
 }
 
 function SuccessParticles() {
+  // Pre-compute particle data deterministically during render (no Math.random in render body).
+  // We use a hashed variation of the index to get stable pseudo-random values.
+  const particles = Array.from({ length: 30 }, (_, i) => {
+    // Simple deterministic pseudo-random based on index
+    const seed1 = ((i * 137 + 42) % 101) / 100;
+    const seed2 = ((i * 251 + 17) % 101) / 100;
+    const seed3 = ((i * 73 + 89) % 101) / 100;
+    const seed4 = ((i * 193 + 31) % 101) / 100;
+    const angle = (i / 30) * Math.PI * 2 + (seed1 - 0.5) * 0.25;
+    const distance = 80 + seed2 * 140;
+    const x = Math.cos(angle) * distance;
+    const y = Math.sin(angle) * distance;
+    const duration = 0.6 + seed3 * 0.5;
+    const color = seed4 > 0.45 ? '#00e676' : 'var(--accent-solid)';
+    return { i, x, y, duration, color };
+  });
+
   return (
     <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
-      {Array.from({ length: 30 }).map((_, i) => {
-        const angle = (i / 30) * Math.PI * 2 + (Math.random() - 0.5) * 0.25;
-        const distance = 80 + Math.random() * 140;
-        const x = Math.cos(angle) * distance;
-        const y = Math.sin(angle) * distance;
-        const duration = 0.6 + Math.random() * 0.5;
-        
-        return (
-          <motion.div
-            key={i}
-            initial={{ x: 0, y: 0, opacity: 1, scale: 1.2 }}
-            animate={{
-              x: x,
-              y: y,
-              opacity: 0,
-              scale: 0,
-            }}
-            transition={{
-              duration: duration,
-              ease: [0.1, 0.8, 0.3, 1],
-            }}
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              width: '4px',
-              height: '4px',
-              backgroundColor: Math.random() > 0.45 ? '#00e676' : 'var(--accent-solid)',
-              boxShadow: '0 0 10px currentColor',
-              transform: 'translate(-50%, -50%)',
-            }}
-          />
-        );
-      })}
+      {particles.map(({ i, x, y, duration, color }) => (
+        <motion.div
+          key={i}
+          initial={{ x: 0, y: 0, opacity: 1, scale: 1.2 }}
+          animate={{
+            x: x,
+            y: y,
+            opacity: 0,
+            scale: 0,
+          }}
+          transition={{
+            duration: duration,
+            ease: [0.1, 0.8, 0.3, 1],
+          }}
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            width: '4px',
+            height: '4px',
+            backgroundColor: color,
+            boxShadow: '0 0 10px currentColor',
+            transform: 'translate(-50%, -50%)',
+          }}
+        />
+      ))}
     </div>
   );
 }
@@ -102,6 +111,9 @@ export default function PracticeArena() {
   const editorRef = useRef(null);
   const abortControllerRef = useRef(null);
 
+  // Initializing state from localStorage and challenge data on mount.
+  // This is a one-time sync with an external store (localStorage).
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     if (!result) return;
     const { challenge } = result;
@@ -133,6 +145,7 @@ export default function PracticeArena() {
     setExecStatus(null);
     setOutput('');
   }, [id, result]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const handleEditorMount = (editor) => {
     editorRef.current = editor;
