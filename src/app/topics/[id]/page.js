@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import styles from './topics.module.css';
@@ -48,8 +49,8 @@ const rowVariants = {
 
 const MotionLink = motion.create(Link);
 
-export default function TopicDetail({ params }) {
-  const { id } = params;
+export default function TopicDetail() {
+  const { id } = useParams();
   const topic = challenges[id];
   const [progress, setProgress] = useState({});
 
@@ -61,7 +62,10 @@ export default function TopicDetail({ params }) {
     return (
       <div className={styles.page}>
         <nav className={styles.nav}>
-          <Link href="/dashboard" className={styles.logo}>C-LABS</Link>
+          <Link href="/dashboard" className={styles.logo}>
+            <span className={styles.logoIcon}></span>
+            C-LABS
+          </Link>
         </nav>
         <div style={{ padding: '4rem', textAlign: 'center' }}>
           <p style={{ fontFamily: 'var(--font-mono)', color: '#ff2200' }}>TOPIC NOT FOUND</p>
