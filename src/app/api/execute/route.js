@@ -1,26 +1,52 @@
 // Next.js API Route: /api/execute
-// Uses Piston API - 100% free, no API key required
+// Uses Wandbox API - free, no API key required
+// Piston API went whitelist-only as of Feb 2026, so we switched to Wandbox
+
+function mapWandboxToPiston(data) {
+  // Wandbox response format → Piston-compatible format
+  // Wandbox: { status, signal, compiler_output, compiler_error, program_output, program_error }
+  // Piston:   { run: { stdout, stderr, signal, code }, compile: { stdout, stderr, code, signal } }
+
+  const hasCompileError = !!(data.compiler_error || data.status === "1");
+  // A runtime failure is indicated by a non-empty program_error or a signal
+  const hasRunError = !!(data.program_error || data.signal);
+
+  return {
+    success: true,
+    compile: {
+      stdout: data.compiler_output || "",
+      stderr: data.compiler_error || "",
+      code: hasCompileError ? 1 : 0,
+      signal: null,
+    },
+    run: {
+      stdout: data.program_output || "",
+      stderr: data.program_error || "",
+      // run.code reflects runtime errors only (compile errors are in compile.code).
+      // When compilation fails the program never runs, so run.code stays 0.
+      code: hasRunError ? 1 : 0,
+      signal: data.signal || null,
+    },
+  };
+}
 
 export async function POST(request) {
-  const { code, stdin = "", language = "c", version = "10.2.0" } = await request.json();
+  const { code, stdin = "" } = await request.json();
 
   const controller = new AbortController();
   const timeoutId = setTimeout(() => {
     controller.abort();
-  }, 10000); // 10s client timeout for compile + run
+  }, 15000); // 15s client timeout for compile + run
 
   try {
-    const response = await fetch("https://emkc.org/api/v2/piston/execute", {
+    const response = await fetch("https://wandbox.org/api/compile.json", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        language,
-        version,
-        files: [{ name: "main.c", content: code }],
-        stdin: stdin,
-        args: [],
-        compile_timeout: 5000,
-        run_timeout: 3000,
+        compiler: "gcc-head",
+        code,
+        stdin,
+        "compiler-option-raw": "-Wall -Wextra",
       }),
       signal: controller.signal,
     });
@@ -28,16 +54,11 @@ export async function POST(request) {
     clearTimeout(timeoutId);
 
     if (!response.ok) {
-      throw new Error(`Piston API error: ${response.status}`);
+      throw new Error(`Wandbox API error: ${response.status}`);
     }
 
     const data = await response.json();
-
-    return Response.json({
-      run: data.run,
-      compile: data.compile,
-      success: true,
-    });
+    return Response.json(mapWandboxToPiston(data));
   } catch (error) {
     clearTimeout(timeoutId);
     if (error.name === 'AbortError') {
