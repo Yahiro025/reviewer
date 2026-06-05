@@ -412,6 +412,16 @@ export default function PracticeArena() {
               <p className={styles.instrText}>{challenge.description}</p>
             </div>
 
+            {challenge.exampleInput && (
+              <>
+                <div className={styles.divider} />
+                <div className={styles.exampleBox}>
+                  <p className={styles.instrLabel}>■ EXAMPLE INPUT</p>
+                  <pre className={styles.exampleInput}>{challenge.exampleInput}</pre>
+                </div>
+              </>
+            )}
+
             <div className={styles.divider} />
 
             <div className={styles.expectedBox}>

@@ -136,6 +136,7 @@ int main() {
 
     return 0;
 }`,
+        exampleInput: "Enter a number: 5",
         expectedOutput: "5 x 1 = 5\n5 x 2 = 10\n5 x 3 = 15\n5 x 4 = 20\n5 x 5 = 25\n5 x 6 = 30\n5 x 7 = 35\n5 x 8 = 40\n5 x 9 = 45\n5 x 10 = 50",
         hint: "Use printf(\"%d x %d = %d\\n\", n, i, n*i) inside your loop.",
       },
@@ -153,6 +154,7 @@ int main() {
 
     return 0;
 }`,
+        exampleInput: "Enter numbers (one per line): 5, 10, 3, -3, -1",
         expectedOutput: "Sum: 15",
         hint: "Use a while loop: read the number at the top, check if it's -1 before adding.",
       },
@@ -226,6 +228,7 @@ int main() {
 
     return 0;
 }`,
+        exampleInput: "Enter grade (0-100): 85",
         expectedOutput: "B",
         hint: "Check the highest ranges first using else-if.",
       },
@@ -243,6 +246,7 @@ int main() {
 
     return 0;
 }`,
+        exampleInput: "Enter day number (1-7): 3",
         expectedOutput: "Wednesday",
         hint: "Use switch(day) with cases 1 through 7 and a default case.",
       },
@@ -260,6 +264,7 @@ int main() {
 
     return 0;
 }`,
+        exampleInput: "Enter side a: 5\nEnter side b: 5\nEnter side c: 8",
         expectedOutput: "Isosceles",
         hint: "A triangle is valid if: a+b>c, b+c>a, and a+c>b.",
       },
@@ -280,6 +285,7 @@ int main() {
 
     return 0;
 }`,
+        exampleInput: "Choice: 1 [Addition]\nEnter two numbers: 7.5 3.2",
         expectedOutput: "Result: 7.50\nResult: 12\nExiting calculator.",
         hint: "Use a do-while loop for the menu. For power, use a for-loop multiplying a by itself b times. Use a switch for operation selection.",
       },
@@ -377,6 +383,7 @@ int main() {
     // TODO: Loop until choice == 5
     return 0;
 }`,
+        exampleInput: "Choice: 2 [Deposit]\nEnter amount: 500\nChoice: 3 [Withdraw]\nEnter amount: 200\nChoice: 4 [Statement]\nChoice: 5 [Exit]",
         expectedOutput: "Deposit 500.00: Balance 1500.00\nWithdraw 200.00: Balance 1300.00\n--- Mini Statement ---\n1. Deposited: 500.00\n2. Withdrew: 200.00",
         hint: "Use a do-while loop for the menu. For transactions, shift elements down: txn[2]=txn[1], txn[1]=txn[0], then txn[0]=new.",
       },
@@ -677,6 +684,7 @@ int main() {
 
     return 0;
 }`,
+        exampleInput: "Enter a word: hello",
         expectedOutput: "Length: 5\nUppercase: HELLO",
         hint: "Loop through each character and apply toupper(word[i]).",
       },
@@ -695,6 +703,7 @@ int main() {
 
     return 0;
 }`,
+        exampleInput: "Enter a word: racecar",
         expectedOutput: "PALINDROME",
         hint: "Compare characters from both ends moving inward using two pointers.",
       },
@@ -716,6 +725,7 @@ int main() {
 
     return 0;
 }`,
+        exampleInput: "Enter a sentence: The quick brown fox",
         expectedOutput: "Characters: 19\nWords: 4\nVowels: 7",
         hint: "A new word starts when you encounter a non-space after a space.",
       },

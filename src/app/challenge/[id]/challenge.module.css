@@ -229,6 +229,7 @@
   margin: 0;
 }
 
+/* ── Hidden hint / Example Input ─────────────────────────────────── */
 .hintToggle {
   font-family: var(--font-mono);
   font-size: 0.7rem;
@@ -254,6 +255,24 @@
   font-size: 0.78rem;
   color: #aaa;
   line-height: 1.5;
+}
+
+.exampleBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.exampleInput {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #aaa;
+  background: #111;
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.75rem;
+  overflow-x: auto;
+  line-height: 1.6;
+  white-space: pre;
+  margin: 0;
 }
 
 .stdinBox {
