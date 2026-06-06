@@ -78,7 +78,7 @@ export default function Home() {
 
         <div className={styles.heroContent}>
           <motion.p className={styles.subtitle} variants={itemVariants}>
-            45 hands-on challenges across 9 core topics.<br />
+            60 hands-on challenges across 12 core topics.<br />
             5 difficulty tiers. Real compiler.<br />
             Track your progress. Level up your C.
           </motion.p>
@@ -138,7 +138,7 @@ export default function Home() {
         transition={{ delay: 0.6, duration: 0.6 }}
       >
         <span className={styles.footerText}>C-LABS © 2025</span>
-        <span className={styles.footerText}>9 TOPICS · 45 CHALLENGES · 5 TIERS</span>
+        <span className={styles.footerText}>12 TOPICS · 60 CHALLENGES · 5 TIERS</span>
       </motion.footer>
     </AnimatePage>
   );
