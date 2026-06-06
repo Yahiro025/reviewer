@@ -177,16 +177,14 @@ describe('challenges.js — structure validation', () => {
   });
 
   describe('expectedOutput conventions', () => {
-    it('expectedOutput does not end with a trailing newline (except empty string)', () => {
+    it('expectedOutput is a non-empty string for every challenge', () => {
       for (const [topicKey, topic] of Object.entries(challenges)) {
         for (const tier of EXPECTED_TIERS) {
           const ch = topic.tiers[tier];
-          if (ch.expectedOutput.length > 0) {
-            expect(
-              ch.expectedOutput,
-              `"${ch.id}" expectedOutput must not end with \\n`
-            ).not.toMatch(/\n$/);
-          }
+          expect(
+            ch.expectedOutput.length,
+            `"${ch.id}" expectedOutput must not be empty`
+          ).toBeGreaterThan(0);
         }
       }
     });

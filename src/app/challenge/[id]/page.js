@@ -9,6 +9,7 @@ import challenges from '@/lib/challenges';
 import { markCompleted, markAttempted, getChallengeStatus } from '@/lib/progress';
 import styles from './challenge.module.css';
 import AnimatePage from '@/components/AnimatePage';
+import { matchOutput } from '@/lib/matchOutput';
 
 // Load Monaco with no SSR (it's browser-only)
 const MonacoEditor = dynamic(() => import('@monaco-editor/react'), { ssr: false });
@@ -108,6 +109,7 @@ export default function PracticeArena() {
   const [hintVisible, setHintVisible] = useState(false);
   const [challengeStatus, setChallengeStatus] = useState('locked');
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [diffDetails, setDiffDetails] = useState([]);
   const editorRef = useRef(null);
   const abortControllerRef = useRef(null);
 
@@ -144,6 +146,7 @@ export default function PracticeArena() {
     setShowSuccessModal(false);
     setExecStatus(null);
     setOutput('');
+    setDiffDetails([]);
   }, [id, result]);
   /* eslint-enable react-hooks/set-state-in-effect */
 
@@ -254,16 +257,17 @@ export default function PracticeArena() {
 
       setOutput(finalOutput.trimEnd() || '[Execution completed with no output]');
 
-      // Check against expected output
-      const expected = challenge.expectedOutput.trim();
-      const actual = runOut.trim();
-      if (actual === expected && !runSignal) {
+      // Check against expected output (fuzzy match)
+      const result = matchOutput(challenge.expectedOutput, runOut);
+      if (result.match && !runSignal) {
         setExecStatus('pass');
         markCompleted(challenge.id);
         setChallengeStatus('completed');
         setShowSuccessModal(true);
+        setDiffDetails([]);
       } else {
         setExecStatus('fail');
+        setDiffDetails(result.details || []);
       }
     } catch (err) {
       if (err.name === 'AbortError') {
@@ -296,6 +300,7 @@ export default function PracticeArena() {
     setShowStdin(false);
     setOutput('');
     setExecStatus(null);
+    setDiffDetails([]);
   };
 
   if (!id) {
@@ -522,6 +527,13 @@ export default function PracticeArena() {
                 <>
                   <p><span className={styles.prompt}>$</span> gcc main.c -o main &amp;&amp; ./main</p>
                   <pre className={styles.outputText}>{output}</pre>
+                  {execStatus === 'fail' && diffDetails.length > 0 && (
+                    <div className={styles.diffDetails}>
+                      <pre className={styles.diffText}>
+                        {'\n'}Differences found:{'\n'}{diffDetails.join('\n')}
+                      </pre>
+                    </div>
+                  )}
                 </>
               ) : (
                 <p className={styles.idle}>

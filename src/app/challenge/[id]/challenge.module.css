@@ -589,3 +589,19 @@
   color: var(--text);
   border-color: #555;
 }
+
+/* ── Diff Details (fuzzy match failure hints) ─────────────────────── */
+.diffDetails {
+  margin-top: 0.5rem;
+  border-top: 1px solid #333;
+  padding-top: 0.5rem;
+}
+
+.diffText {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #ff6b00;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin: 0;
+}
