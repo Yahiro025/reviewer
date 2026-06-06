@@ -10,8 +10,9 @@ import AnimatePage from '@/components/AnimatePage';
 
 // Build topic metadata from challenges data
 const TOPIC_ORDER = [
-  'arrays', 'loops', 'conditionals', 'functions', 'pointers',
-  'structures', 'strings', 'struct-arrays', 'file-handling',
+  'arrays', 'searching', 'loops', 'conditionals', 'predefined-functions',
+  'functions', 'pointers', 'structures', 'nested-structures',
+  'struct-arrays', 'strings', 'file-handling',
 ];
 
 const topicMeta = TOPIC_ORDER.map((key) => {
@@ -83,7 +84,7 @@ export default function Dashboard() {
     setEditingName(false);
   };
 
-  const pctCompleted = totalCompleted > 0 ? Math.round((totalCompleted / 45) * 100) : 0;
+  const pctCompleted = totalCompleted > 0 ? Math.round((totalCompleted / 60) * 100) : 0;
 
   return (
     <AnimatePage className={styles.page}>
@@ -130,7 +131,7 @@ export default function Dashboard() {
         <div className={styles.headerRight}>
           <div className={styles.bigStat}>
             <span className={styles.bigNum}>{totalCompleted}</span>
-            <span className={styles.bigDenom}>/45</span>
+            <span className={styles.bigDenom}>/60</span>
           </div>
           <p className={styles.statLabel}>CHALLENGES COMPLETED</p>
           <div className={styles.globalBar}>

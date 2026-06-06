@@ -1,4 +1,4 @@
-// All 9 topics with 5 difficulty tiers each (45 challenges total)
+// All 12 topics with 5 difficulty tiers each (60 challenges total)
 const challenges = {
   arrays: {
     title: "Arrays",
@@ -37,7 +37,7 @@ int main() {
     return 0;
 }`,
         expectedOutput: "3\n0\n5\n0\n8",
-        hint: "Use an if statement inside your loop: if (arr[i] < 0) arr[i] = 0;",
+        hint: "Use an if statement inside your loop: if (arr[i] < 0) arr[i] = 0.",
       },
       intermediate: {
         id: "arrays-intermediate",
@@ -103,9 +103,131 @@ int main() {
     },
   },
 
+  searching: {
+    title: "Searching in Arrays",
+    number: "02",
+    description: "Learn to search for elements in arrays using linear search, binary search, and multi-criteria lookup techniques.",
+    tiers: {
+      novice: {
+        id: "searching-novice",
+        title: "Find a Number",
+        description: "Given an array of 5 integers {10, 20, 30, 40, 50} and a target value 30, check if the target exists in the array. Print 'FOUND' if it exists, otherwise print 'NOT FOUND'.",
+        starterCode: `#include <stdio.h>
+
+int main() {
+    int arr[5] = {10, 20, 30, 40, 50};
+    int target = 30;
+    int found = 0;
+
+    // TODO: Loop through array and check if target exists
+    // TODO: Print FOUND or NOT FOUND
+
+    return 0;
+}`,
+        expectedOutput: "FOUND",
+        hint: "Loop through each element with a for loop and compare arr[i] with the target.",
+      },
+      beginner: {
+        id: "searching-beginner",
+        title: "Find the Index",
+        description: "Given an array of 6 integers {10, 20, 25, 30, 35, 40} and a target value 25, use linear search to find the target. Print the 0-based index if found, or 'NOT FOUND' if not.",
+        starterCode: `#include <stdio.h>
+
+int main() {
+    int arr[6] = {10, 20, 25, 30, 35, 40};
+    int target = 25;
+
+    // TODO: Loop and compare each element to target
+    // TODO: Print index if found, NOT FOUND if not
+
+    return 0;
+}`,
+        expectedOutput: "Target 25 found at index 2",
+        hint: "Use a for loop. When arr[i] equals target, print i and break.",
+      },
+      intermediate: {
+        id: "searching-intermediate",
+        title: "Count Occurrences",
+        description: "Given an array of 10 integers {3, 5, 7, 5, 9, 2, 5, 8, 1, 5} and a target value 5, count how many times the target appears and print all positions (1-based index).",
+        starterCode: `#include <stdio.h>
+
+int main() {
+    int arr[10] = {3, 5, 7, 5, 9, 2, 5, 8, 1, 5};
+    int target = 5;
+    int count = 0;
+
+    // TODO: Scan entire array, count matches, track positions
+    // TODO: Print count and 1-based positions
+
+    return 0;
+}`,
+        expectedOutput: "Value 5 appears 4 times at positions: 2, 4, 7, 10",
+        hint: "Don't break at first match. Use a counter and print (i+1) for 1-based positions.",
+      },
+      advanced: {
+        id: "searching-advanced",
+        title: "Binary Search in Sorted Array",
+        description: "Given a sorted array of 10 integers {2, 5, 8, 12, 16, 23, 38, 47, 56, 72} and a target value 47, implement binary search. Print the 0-based index if found, the number of comparisons made, or 'NOT FOUND' if not in the array.",
+        starterCode: `#include <stdio.h>
+
+int main() {
+    int arr[10] = {2, 5, 8, 12, 16, 23, 38, 47, 56, 72};
+    int target = 47;
+    int low = 0, high = 9, mid;
+    int comparisons = 0;
+    int found = 0;
+
+    // TODO: Implement binary search with comparison counter
+    // TODO: Print result with index and comparison count
+
+    return 0;
+}`,
+        expectedOutput: "Found 47 at index 7 (3 comparisons)",
+        hint: "Use low=0, high=9. Each iteration: mid = (low+high)/2, compare, then adjust low or high. Count each comparison.",
+      },
+      expert: {
+        id: "searching-expert",
+        title: "Student Contact Lookup System",
+        description: "Build a student contact lookup system. Create a Student structure with fields: id (int), name (char[50]), phone (char[15]), course (char[30]). Use an array of 8 hardcoded students sorted by ID. Implement these functions:\n1. searchByID(int id) — binary search by student ID, print full details\n2. searchByName(char *name) — linear search, case-insensitive partial match using strstr()\n3. searchByCourse(char *course) — find all students in a given course\n4. compareSearchMethods() — search for the same ID using linear and binary search, print comparison count for each\nDemonstrate all functions in main with clear labels.",
+        starterCode: `#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+typedef struct {
+    int id;
+    char name[50];
+    char phone[15];
+    char course[30];
+} Student;
+
+void searchByID(Student students[], int n, int id) { /* TODO: Binary search by ID */ }
+void searchByName(Student students[], int n, char *name) { /* TODO: Linear search, partial match */ }
+void searchByCourse(Student students[], int n, char *course) { /* TODO: Find all in course */ }
+void compareSearchMethods(Student students[], int n, int id) { /* TODO: Linear vs binary comparison */ }
+
+int main() {
+    Student students[8] = {
+        {101, "Ana Reyes", "09171234567", "Computer Science"},
+        {102, "Ben Cruz", "09181234567", "Mathematics"},
+        {103, "Cara Lim", "09191234567", "Physics"},
+        {104, "Juan Dela Cruz", "09171234567", "Computer Science"},
+        {105, "Eve Go", "09201234567", "Mathematics"},
+        {106, "Fran Sy", "09211234567", "Physics"},
+        {107, "Maria Santos", "09221234567", "Computer Science"},
+        {108, "Nico Tan", "09231234567", "Mathematics"}
+    };
+    // TODO: Demonstrate all 4 functions
+    return 0;
+}`,
+        expectedOutput: "--- Search by ID (Binary) ---\nID: 104 | Juan Dela Cruz | 09171234567 | Computer Science\n\n--- Search by Name ---\nFound: Ana Reyes (ID: 101)\n\n--- Students in Computer Science ---\nID: 101 | Ana Reyes\nID: 104 | Juan Dela Cruz\nID: 107 | Maria Santos\n\n--- Search Method Comparison ---\nLinear search: 4 comparisons\nBinary search: 3 comparisons",
+        hint: "For binary search, the array is pre-sorted by ID. For name search, convert both strings to lowercase before using strstr(). For comparison counting, increment a counter each time you compare.",
+      },
+    },
+  },
+
   loops: {
     title: "Loops",
-    number: "02",
+    number: "03",
     description: "Master repetition with for, while, and do-while loops in C.",
     tiers: {
       novice: {
@@ -120,7 +242,7 @@ int main() {
     return 0;
 }`,
         expectedOutput: "1\n2\n3\n4\n5\n6\n7\n8\n9\n10",
-        hint: "for (int i = 1; i <= 10; i++)",
+        hint: "for (int i = 1; i <= 10; i++).",
       },
       beginner: {
         id: "loops-beginner",
@@ -194,7 +316,7 @@ int main() {
 
   conditionals: {
     title: "Conditionals",
-    number: "03",
+    number: "04",
     description: "Control program flow using if-else statements and switch cases.",
     tiers: {
       novice: {
@@ -211,6 +333,7 @@ int main() {
 
     return 0;
 }`,
+        exampleInput: "Enter an integer: 5",
         expectedOutput: "POSITIVE",
         hint: "Use an if-else if-else chain.",
       },
@@ -292,9 +415,116 @@ int main() {
     },
   },
 
+  "predefined-functions": {
+    title: "Predefined Functions",
+    number: "05",
+    description: "Explore C's powerful standard library — from formatted I/O and string manipulation to math operations and character classification.",
+    tiers: {
+      novice: {
+        id: "predefined-functions-novice",
+        title: "Character Inspector",
+        description: "Given a hardcoded character 'a', use ctype.h functions to check and print: whether it is a letter, whether it is a digit, whether it is uppercase, and print its uppercase version.",
+        starterCode: `#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char ch = 'a';
+
+    // TODO: Use isalpha, isdigit, isupper, toupper
+    // TODO: Print all results with labels
+
+    return 0;
+}`,
+        expectedOutput: "Character: 'a'\nIs letter: Yes\nIs digit: No\nUppercase: A",
+        hint: "Use isalpha(ch) which returns non-zero if letter. Use toupper(ch) to convert.",
+      },
+      beginner: {
+        id: "predefined-functions-beginner",
+        title: "String Toolkit",
+        description: "Given two hardcoded strings 'Hello' and 'World', use string.h functions to print: length of each string, concatenated result, comparison result (which comes first alphabetically), and whether 'World' is found inside the concatenated string.",
+        starterCode: `#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str1[] = "Hello";
+    char str2[] = "World";
+    char buffer[100];
+
+    // TODO: Use strlen, strcat (into buffer), strcmp, strstr
+    // TODO: Print all results with labels
+
+    return 0;
+}`,
+        expectedOutput: "Length of 'Hello': 5\nLength of 'World': 5\nConcatenated: HelloWorld\n'Hello' comes before 'World'\n'World' found in 'HelloWorld': Yes",
+        hint: "strcmp returns negative if first < second. strstr returns NULL if not found. Use a buffer[100] for concatenation.",
+      },
+      intermediate: {
+        id: "predefined-functions-intermediate",
+        title: "Math Operations Suite",
+        description: "Given two hardcoded numbers a=14.7 and b=3.2, use math.h to compute and print: sqrt(a), pow(a, b), ceil(a), floor(a), fabs(-8.5), and fmod(a, b). Print all results with 2 decimal places.",
+        starterCode: `#include <stdio.h>
+#include <math.h>
+
+int main() {
+    double a = 14.7, b = 3.2;
+
+    // TODO: Compute and print each operation with %.2f format
+
+    return 0;
+}`,
+        expectedOutput: "sqrt(14.70) = 3.83\npow(14.70, 3.20) = 4528.47\nceil(14.70) = 15.00\nfloor(14.70) = 14.00\nfabs(-8.50) = 8.50\nfmod(14.70, 3.20) = 1.90",
+        hint: "Use %.2f for all printf formats. Include math.h. pow(base, exp) returns double.",
+      },
+      advanced: {
+        id: "predefined-functions-advanced",
+        title: "Math Quiz with Fixed Questions",
+        description: "Build a math quiz using hardcoded question pairs stored in two arrays. Use 5 fixed addition questions with numbers 1-50. Display each question, read the user's answer via scanf, track the score, and print a summary at the end with ✓ or ✗ for each answer.",
+        starterCode: `#include <stdio.h>
+
+int main() {
+    int questionsA[5] = {12, 8, 25, 3, 19};
+    int questionsB[5] = {17, 34, 6, 45, 10};
+    int answer, score = 0;
+
+    // TODO: Loop 5 times, display question and read answer
+    // TODO: Track score, print ✓ or ✗ per question
+    // TODO: Print score summary
+
+    return 0;
+}`,
+        exampleInput: "29\n42\n31\n48\n29",
+        expectedOutput: "Q1: 12 + 17 = ? Your answer: 29 ✓\nQ2: 8 + 34 = ? Your answer: 42 ✓\nQ3: 25 + 6 = ? Your answer: 31 ✓\nQ4: 3 + 45 = ? Your answer: 48 ✓\nQ5: 19 + 10 = ? Your answer: 29 ✓\nScore: 5/5 — EXCELLENT!",
+        hint: "Use a for loop from 0 to 4. Compare answer == questionsA[i] + questionsB[i]. Print score/5 with a rating: 5=EXCELLENT!, 4=GOOD, 3=OK, below 3=KEEP PRACTICING.",
+      },
+      expert: {
+        id: "predefined-functions-expert",
+        title: "Document Analyzer",
+        description: "Build a text analysis tool using a hardcoded paragraph. Implement these functions using string.h, ctype.h, and stdlib.h:\n1. wordCount(char *text) — count total words\n2. charFrequency(char *text) — count frequency of each vowel (a, e, i, o, u, case-insensitive)\n3. findLongestWord(char *text) — find and print the longest word\n4. replaceWord(char *text, char *old, char *new, char *result) — replace all occurrences of old with new in text\n5. extractNumbers(char *text) — find and print all numeric tokens\nUse strtok, strstr, strlen, strcpy, strcat, strcmp, isdigit, tolower extensively. Demonstrate all functions in main.",
+        starterCode: `#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+
+int wordCount(char *text) { /* TODO: Count words with strtok */ }
+void charFrequency(char *text) { /* TODO: Count each vowel */ }
+void findLongestWord(char *text) { /* TODO: Find longest word */ }
+void replaceWord(char *text, char *old, char *new, char *result) { /* TODO: Replace all occurrences */ }
+void extractNumbers(char *text) { /* TODO: Find numeric tokens */ }
+
+int main() {
+    char text[] = "The quick brown fox jumps over 3 lazy dogs 5 times in 2025";
+    // TODO: Demonstrate all 5 functions
+    return 0;
+}`,
+        expectedOutput: "--- Word Count ---\nTotal words: 12\n\n--- Vowel Frequency ---\na: 2\ne: 4\ni: 2\no: 5\nu: 3\n\n--- Longest Word ---\nLongest: jumps (5 chars)\n\n--- Extract Numbers ---\nNumbers found: 3, 5, 2025",
+        hint: "Use strtok(text, ' ') to split into words. For replace, scan with strstr and build result string. For numbers, check each token character with isdigit().",
+      },
+    },
+  },
+
   functions: {
     title: "User Defined Functions",
-    number: "04",
+    number: "06",
     description: "Break code into reusable, modular functions with parameters and return values.",
     tiers: {
       novice: {
@@ -310,7 +540,7 @@ int main() {
     return 0;
 }`,
         expectedOutput: "Welcome to C-LABS!",
-        hint: "void greetUser() { printf(\"...\"); }",
+        hint: "void greetUser() { printf(\"...\"); }.",
       },
       beginner: {
         id: "functions-beginner",
@@ -326,7 +556,7 @@ int main() {
     return 0;
 }`,
         expectedOutput: "Discount: 15.00",
-        hint: "The function signature: float getDiscount(float price)",
+        hint: "The function signature: float getDiscount(float price).",
       },
       intermediate: {
         id: "functions-intermediate",
@@ -392,7 +622,7 @@ int main() {
 
   pointers: {
     title: "Pointers",
-    number: "05",
+    number: "07",
     description: "Understand memory addresses, pointer arithmetic, and pass-by-reference.",
     tiers: {
       novice: {
@@ -409,7 +639,7 @@ int main() {
     return 0;
 }`,
         expectedOutput: "Value via pointer: 42",
-        hint: "int *ptr = &x; printf(\"%d\", *ptr);",
+        hint: "int *ptr = &x; printf(\"%d\", *ptr);.",
       },
       beginner: {
         id: "pointers-beginner",
@@ -429,7 +659,7 @@ int main() {
     return 0;
 }`,
         expectedOutput: "Before: x=5, y=10\nAfter: x=10, y=5",
-        hint: "int temp = *a; *a = *b; *b = temp;",
+        hint: "int temp = *a; *a = *b; *b = temp;.",
       },
       intermediate: {
         id: "pointers-intermediate",
@@ -510,7 +740,7 @@ int main() {
 
   structures: {
     title: "Structures",
-    number: "06",
+    number: "08",
     description: "Group related data together using C structs.",
     tiers: {
       novice: {
@@ -527,7 +757,7 @@ int main() {
     return 0;
 }`,
         expectedOutput: "Point: (5, 10)",
-        hint: "struct Point { int x; int y; }; — then use dot notation: p.x = 5;",
+        hint: "struct Point { int x; int y; }; — then use dot notation: p.x = 5;.",
       },
       beginner: {
         id: "structures-beginner",
@@ -543,7 +773,7 @@ int main() {
     return 0;
 }`,
         expectedOutput: "ID: 1\nName: Notebook\nPrice: 50.00\nTotal (with 12% tax): 56.00",
-        hint: "float total = item.price * 1.12;",
+        hint: "float total = item.price * 1.12;.",
       },
       intermediate: {
         id: "structures-intermediate",
@@ -646,9 +876,144 @@ int main() {
     },
   },
 
+  "nested-structures": {
+    title: "Nested Structure",
+    number: "09",
+    description: "Learn to model complex real-world data by nesting structures within structures and combining them with arrays.",
+    tiers: {
+      novice: {
+        id: "nested-structures-novice",
+        title: "Point with Color",
+        description: "Define a Color structure with fields r, g, b (all int). Define a ColoredPoint structure with fields x (int), y (int), and c (Color). Create one ColoredPoint with x=3, y=7, and color RGB(255, 128, 0). Print the point coordinates and color values.",
+        starterCode: `#include <stdio.h>
+
+struct Color { int r, g, b; };
+struct ColoredPoint { int x, y; struct Color c; };
+
+int main() {
+    struct ColoredPoint p = {3, 7, {255, 128, 0}};
+    // TODO: Print using nested access
+    return 0;
+}`,
+        expectedOutput: "Point: (3, 7)\nColor: RGB(255, 128, 0)",
+        hint: "Access nested fields with dot notation: point.c.r, point.c.g, point.c.b.",
+      },
+      beginner: {
+        id: "nested-structures-beginner",
+        title: "Student with Address",
+        description: "Define an Address structure with fields: street[50], city[30], zipCode[10]. Define a Student structure with fields: name[50], grade (int), and addr (Address). Create one student: Ana Reyes, grade 92, address '123 Main St, Quezon City, 1100'. Print all details including the nested address.",
+        starterCode: `#include <stdio.h>
+#include <string.h>
+
+struct Address { char street[50]; char city[30]; char zipCode[10]; };
+struct Student { char name[50]; int grade; struct Address addr; };
+
+int main() {
+    struct Student s = {"Ana Reyes", 92, {"123 Main St", "Quezon City", "1100"}};
+    // TODO: Print all fields
+    return 0;
+}`,
+        expectedOutput: "Student: Ana Reyes\nGrade: 92\nAddress: 123 Main St, Quezon City, 1100",
+        hint: "Initialize with nested braces: {\"Ana Reyes\", 92, {\"123 Main St\", \"Quezon City\", \"1100\"}}.",
+      },
+      intermediate: {
+        id: "nested-structures-intermediate",
+        title: "Employee with Department",
+        description: "Define a Department structure with fields: deptName[30], floor (int). Define an Employee structure with fields: name[50], id (int), salary (float), dept (Department). Create 3 employees:\n- ID 101, Ana Reyes, 45000.00, Engineering, Floor 3\n- ID 102, Ben Cruz, 38000.00, Marketing, Floor 1\n- ID 103, Cara Lim, 52000.00, Engineering, Floor 3\nPrint a formatted roster showing all employees. Then find and print the employee with the highest salary.",
+        starterCode: `#include <stdio.h>
+
+struct Department { char deptName[30]; int floor; };
+struct Employee { char name[50]; int id; float salary; struct Department dept; };
+
+int main() {
+    struct Employee employees[3] = {
+        {"Ana Reyes", 101, 45000.00, {"Engineering", 3}},
+        {"Ben Cruz", 102, 38000.00, {"Marketing", 1}},
+        {"Cara Lim", 103, 52000.00, {"Engineering", 3}}
+    };
+    // TODO: Print roster, find highest salary
+    return 0;
+}`,
+        expectedOutput: "--- Employee Roster ---\nID: 101 | Ana Reyes | 45000.00 | Engineering (Floor 3)\nID: 102 | Ben Cruz | 38000.00 | Marketing (Floor 1)\nID: 103 | Cara Lim | 52000.00 | Engineering (Floor 3)\n\nHighest Paid: Cara Lim — 52000.00",
+        hint: "Access nested fields: employees[i].dept.deptName. Compare salaries in a loop to find the maximum.",
+      },
+      advanced: {
+        id: "nested-structures-advanced",
+        title: "Course Enrollment Manager",
+        description: "Define a Course structure with fields: code[10], title[50], units (int), grade (float). Define a Student structure with fields: name[50], id (int), courses[4] (Course array), courseCount (int), gpa (float). Create 3 students with 2-4 courses each:\n- Student 1: Ana Reyes (ID: 101) — CS101 (3 units, 3.5), MATH201 (4 units, 3.0), ENG101 (2 units, 3.7)\n- Student 2: Ben Cruz (ID: 102) — CS101 (3 units, 2.5), CS201 (3 units, 2.0)\n- Student 3: Cara Lim (ID: 103) — MATH201 (4 units, 3.8), CS201 (3 units, 3.9), ENG101 (2 units, 3.5), CS301 (3 units, 4.0)\nImplement:\n1. computeGPA() — weighted average: sum(grade * units) / sum(units)\n2. findDeansList() — print students with GPA >= 3.5\n3. printTranscript(int idx) — print full formatted transcript for student at index idx\nDemonstrate all functions in main.",
+        starterCode: `#include <stdio.h>
+
+struct Course { char code[10]; char title[50]; int units; float grade; };
+struct Student { char name[50]; int id; struct Course courses[4]; int courseCount; float gpa; };
+
+void computeGPA(struct Student *s) {
+    // TODO: Weighted average: sum(grade * units) / sum(units)
+}
+
+void findDeansList(struct Student students[], int n) {
+    // TODO: Print students with GPA >= 3.5
+}
+
+void printTranscript(struct Student *s) {
+    // TODO: Print full formatted transcript
+}
+
+int main() {
+    struct Student students[3] = {
+        {"Ana Reyes", 101, {{"CS101", "Intro to Programming", 3, 3.5}, {"MATH201", "Calculus II", 4, 3.0}, {"ENG101", "English Composition", 2, 3.7}}, 3, 0},
+        {"Ben Cruz", 102, {{"CS101", "Intro to Programming", 3, 2.5}, {"CS201", "Data Structures", 3, 2.0}}, 2, 0},
+        {"Cara Lim", 103, {{"MATH201", "Calculus II", 4, 3.8}, {"CS201", "Data Structures", 3, 3.9}, {"ENG101", "English Composition", 2, 3.5}, {"CS301", "Algorithms", 3, 4.0}}, 4, 0}
+    };
+    // TODO: Compute GPAs, print them, find Dean's List, print transcript
+    return 0;
+}`,
+        expectedOutput: "--- Student GPAs ---\nAna Reyes: GPA 3.34\nBen Cruz: GPA 2.25\nCara Lim: GPA 3.85\n\n--- Dean's List (GPA >= 3.5) ---\nCara Lim — GPA 3.85\n\n--- Transcript: Ana Reyes (ID: 101) ---\nCS101 - Intro to Programming | 3 units | Grade: 3.50\nMATH201 - Calculus II | 4 units | Grade: 3.00\nENG101 - English Composition | 2 units | Grade: 3.70\nGPA: 3.34",
+        hint: "GPA = sum(grade * units) / sum(units). Use nested loops: outer for students, inner for their courses.",
+      },
+      expert: {
+        id: "nested-structures-expert",
+        title: "School Enrollment System",
+        description: "Build a school enrollment system with nested structures:\n\nSchedule: day[10], startTime[6], endTime[6], room[10]\nCourse: code[10], title[50], units (int), schedule[3] (Schedule array), scheduleCount (int)\nStudent: name[50], id (int), courses[5] (Course array), courseCount (int)\n\nCreate 4 students and 6 available courses with schedules. Implement:\n1. enrollStudent(Student *s, Course c) — add course if no time conflict and space available\n2. dropCourse(Student *s, char *code) — remove course by code\n3. printSchedule(Student *s) — display formatted weekly schedule with times and rooms\n4. findConflicts(Student students[], int n) — check all students for time conflicts\n5. departmentLoad(Student students[], int n) — count enrollments per course code\n\nDemonstrate enrollment, dropping, schedule printing, conflict detection, and load report in main.",
+        starterCode: `#include <stdio.h>
+#include <string.h>
+
+struct Schedule { char day[10]; char startTime[6]; char endTime[6]; char room[10]; };
+struct Course { char code[10]; char title[50]; int units; struct Schedule schedule[3]; int scheduleCount; };
+struct Student { char name[50]; int id; struct Course courses[5]; int courseCount; };
+
+int enrollStudent(struct Student *s, struct Course c) { /* TODO: Check conflicts and space, add if ok */ }
+int dropCourse(struct Student *s, char *code) { /* TODO: Remove course by code */ }
+void printSchedule(struct Student *s) { /* TODO: Display weekly schedule */ }
+void findConflicts(struct Student students[], int n) { /* TODO: Check all students */ }
+void departmentLoad(struct Student students[], int n) { /* TODO: Count per course */ }
+
+int main() {
+    struct Course courses[6] = {
+        {"CS101", "Intro to Programming", 3, {{"Mon", "09:00", "10:30", "R101"}, {"Wed", "09:00", "10:30", "R101"}}, 2},
+        {"CS201", "Data Structures", 3, {{"Tue", "13:00", "14:30", "R102"}, {"Thu", "13:00", "14:30", "R102"}}, 2},
+        {"MATH101", "Calculus I", 4, {{"Mon", "11:00", "12:30", "R201"}, {"Wed", "11:00", "12:30", "R201"}, {"Fri", "11:00", "12:00", "R201"}}, 3},
+        {"ENG101", "English Composition", 2, {{"Tue", "09:00", "10:30", "R301"}}, 1},
+        {"CS301", "Algorithms", 3, {{"Thu", "15:00", "16:30", "R103"}, {"Fri", "15:00", "16:30", "R103"}}, 2},
+        {"PHY101", "Physics", 4, {{"Mon", "13:00", "14:30", "R401"}, {"Wed", "13:00", "14:30", "R401"}, {"Fri", "13:00", "14:00", "R401"}}, 3}
+    };
+    struct Student students[4] = {
+        {"Ana Reyes", 101, {}, 0},
+        {"Ben Cruz", 102, {}, 0},
+        {"Cara Lim", 103, {}, 0},
+        {"Dan Sy", 104, {}, 0}
+    };
+    // TODO: Demonstrate enrollment, dropping, schedule, conflicts, load
+    return 0;
+}`,
+        expectedOutput: "--- Enrollment ---\nAna Reyes enrolled in CS101\nAna Reyes enrolled in MATH101\nCara Lim enrolled in CS201\nCara Lim enrolled in ENG101\n\n--- Ana's Schedule ---\nMon 09:00-10:30: CS101 (R101)\nMon 11:00-12:30: MATH101 (R201)\nWed 09:00-10:30: CS101 (R101)\nWed 11:00-12:30: MATH101 (R201)\nFri 11:00-12:00: MATH101 (R201)\n\n--- Course Load ---\nCS101: 1 enrolled\nCS201: 1 enrolled\nMATH101: 1 enrolled\nENG101: 1 enrolled",
+        hint: "For time conflicts: same day AND overlapping time ranges = conflict. Overlap check: start1 < end2 AND start2 < end1. Use strcmp for day and code matching.",
+      },
+    },
+  },
+
   strings: {
     title: "Strings",
-    number: "07",
+    number: "11",
     description: "Manipulate text using C character arrays and string functions.",
     tiers: {
       novice: {
@@ -665,7 +1030,7 @@ int main() {
     return 0;
 }`,
         expectedOutput: "Hello, Maria!",
-        hint: "Use printf(\"Hello, %s!\", name);",
+        hint: "Use printf(\"Hello, %s!\", name);.",
       },
       beginner: {
         id: "strings-beginner",
@@ -756,7 +1121,7 @@ int main() {
 
   "struct-arrays": {
     title: "Structure Arrays",
-    number: "08",
+    number: "10",
     description: "Combine arrays and structures to model real-world data collections.",
     tiers: {
       novice: {
@@ -772,7 +1137,7 @@ int main() {
     return 0;
 }`,
         expectedOutput: "Contact 1: Juan Dela Cruz - 09171234567\nContact 2: Maria Santos - 09281234567",
-        hint: "struct Contact contacts[2] = {{\"Juan Dela Cruz\", \"09171234567\"}, ...};",
+        hint: "struct Contact contacts[2] = {{\"Juan Dela Cruz\", \"09171234567\"}, ...};.",
       },
       beginner: {
         id: "struct-arrays-beginner",
@@ -912,7 +1277,7 @@ int main() {
 
   "file-handling": {
     title: "File Handling",
-    number: "09",
+    number: "12",
     description: "Read from and write to files using C's stdio file I/O functions.",
     tiers: {
       novice: {
