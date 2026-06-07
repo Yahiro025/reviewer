@@ -140,6 +140,11 @@ npm audit --audit-level=high
 - **Always** after changes to: auth, input handling, DB queries, payments, file/external API integrations
 - **Immediately** during: incidents, CVE reports, before releases
 - **Success Metrics**: No critical/high issues, no secrets in code, current dependencies`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

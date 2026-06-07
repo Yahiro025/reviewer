@@ -267,6 +267,11 @@ Output: 5 files generated, setup.sh executable, "Using with Claude Code" section
 - **Read** the actual project code to understand it — do not guess at architecture
 - CLAUDE.md must be accurate — wrong commands are worse than no commands
 - If the project already has good docs, enhance them rather than replace`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

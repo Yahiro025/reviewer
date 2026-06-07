@@ -205,6 +205,11 @@ const definition: AgentDefinition = {
     'Continue auditing. ' +
     'If you have found and fixed all issues, output your final VALIDATION PASSED/FAILED summary and call end_turn. ' +
     'Do not call end_turn while there are unresolved issues or while a regex scan is pending.',
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

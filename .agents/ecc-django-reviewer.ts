@@ -178,6 +178,11 @@ For testing patterns and fixtures, see \`skill: django-tdd\`.
 ---
 
 Review with the mindset: "Would this code safely serve 10,000 concurrent users without data loss, security breach, or a 3am pager alert?"`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

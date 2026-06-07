@@ -116,6 +116,11 @@ Write your output to \`gan-harness/spec.md\` in the project root. Structure:
 2. Research: If the prompt references a specific type of app, read any existing examples or specs in the codebase
 3. Write the full spec to \`gan-harness/spec.md\`
 4. Also write a concise \`gan-harness/eval-rubric.md\` with the evaluation criteria in a format the Evaluator can consume directly`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

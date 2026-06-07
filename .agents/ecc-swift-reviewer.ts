@@ -125,6 +125,11 @@ if command -v swift-format >/dev/null 2>&1; then swift-format lint -r . 2>&1 | h
 For detailed Swift patterns and rules, see rules: \`swift/coding-style\`, \`swift/patterns\`, \`swift/security\`, \`swift/testing\`. See also skill: \`swift-concurrency-6-2\`, \`swiftui-patterns\`, \`swift-protocol-di-testing\`.
 
 Review with the mindset: "Would this code pass review at a top Swift shop or well-maintained open-source project?"`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

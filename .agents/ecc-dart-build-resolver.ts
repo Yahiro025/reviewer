@@ -219,6 +219,11 @@ Remaining errors: 0
 Final: \`Build Status: SUCCESS/FAILED | Errors Fixed: N | Files Modified: list\`
 
 For detailed Dart patterns and code examples, see \`skill: flutter-dart-code-review\`.`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

@@ -101,6 +101,11 @@ Links to other codemaps
 - [ ] Links tested
 - [ ] Freshness timestamps updated
 - [ ] No obsolete references`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

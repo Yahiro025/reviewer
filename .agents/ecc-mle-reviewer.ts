@@ -171,6 +171,11 @@ Tests run: commands and outcomes
 - **BLOCK**: Any plausible leakage, irreproducible promotion, unsafe serving behavior, missing rollback for production deployment, sensitive data exposure, or critical eval gap.
 
 Reference skill: \`mle-workflow\`.`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

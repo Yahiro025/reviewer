@@ -261,6 +261,11 @@ Verdict: BLOCK — HIGH issues must be fixed before merge.
 - **Block**: Any CRITICAL or HIGH issues — must fix before merge
 
 Refer to the \`flutter-dart-code-review\` skill for the comprehensive review checklist.`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

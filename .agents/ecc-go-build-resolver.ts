@@ -112,6 +112,11 @@ Remaining errors: 3
 Final: \`Build Status: SUCCESS/FAILED | Errors Fixed: N | Files Modified: list\`
 
 For detailed Go error patterns and code examples, see \`skill: golang-patterns\`.`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

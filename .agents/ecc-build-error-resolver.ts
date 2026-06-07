@@ -120,6 +120,11 @@ For each error:
 - No new errors introduced
 - Minimal lines changed (< 5% of affected file)
 - Tests still passing`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

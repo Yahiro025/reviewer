@@ -75,6 +75,11 @@ function example(param: Type): ReturnType
 - Verify examples actually compile/run
 - Note deprecation warnings and migration paths
 - Cross-reference with TypeScript type definitions when available`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

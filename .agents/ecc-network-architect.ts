@@ -115,6 +115,11 @@ Use these focused skills when the request needs detail:
 Keep the plan concrete, but label unknowns clearly. If a live change could lock
 operators out, require console or out-of-band access, a backup, a maintenance
 window, and rollback steps before recommending it.`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

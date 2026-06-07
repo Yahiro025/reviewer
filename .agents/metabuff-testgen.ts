@@ -44,7 +44,6 @@ const definition: AgentDefinition = {
     'write_file',
     'str_replace',
     'run_terminal_command',
-    'find_files',
     'end_turn',
   ],
 
@@ -116,6 +115,11 @@ For your test generation subtask:
     'Continue generating tests. ' +
     'Run each test file as you write it. ' +
     'Call end_turn only when all tests are written and passing.',
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

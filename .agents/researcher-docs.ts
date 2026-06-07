@@ -70,6 +70,11 @@ Never modify business logic or tests.
 ### Output
 After completing documentation, list the files created or updated:
   DOCS UPDATED: <file list>`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

@@ -261,6 +261,11 @@ Final: \`Django Status: OK/FAILED | Errors Fixed: N | Files Modified: list\`
 
 For Django architecture and ORM patterns, see \`skill: django-patterns\`.
 For Django security settings, see \`skill: django-security\`.`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

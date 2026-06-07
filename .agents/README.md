@@ -150,9 +150,10 @@ const definition = {
 | `metabuff-validator.ts` | ❌ | ✅ N/A |
 | `metabuff-reasoner.ts` | ❌ | ✅ N/A |
 | `metabuff-regex-guard.ts` | ❌ | ✅ N/A — REGEX_SCAN_COMMAND is a module-level const used only in instructionsPrompt (safe) |
-| `metabuff-testgen.ts` | ❌ | ✅ N/A |
-| `metabuff-arch.ts` | ❌ | ✅ N/A |
-| `metabuff-security.ts` | ❌ | ✅ N/A |
+| `metabuff-testgen.ts` | ✅ | ✅ Inlined |
+| `metabuff-arch.ts` | ✅ | ✅ Inlined |
+| `metabuff-security.ts` | ✅ | ✅ Inlined |
+| `code-reviewer-deepseek.ts` | ✅ | ✅ Inlined |
 
 ## Anti-Hallucination Protocol (CoT v2)
 

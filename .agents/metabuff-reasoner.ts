@@ -166,6 +166,11 @@ const definition: AgentDefinition = {
     'Continue reasoning through the Socratic protocol. ' +
     'If you are on STEP 5 or 6, run your tests before calling end_turn. ' +
     'Do not call end_turn while any ⚠ UNCERTAIN items are unresolved or any tests are failing.',
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

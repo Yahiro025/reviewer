@@ -110,6 +110,11 @@ Common causes: race conditions, network timing, animation timing.
 - Flaky rate < 5%
 - Test duration < 10 minutes
 - Artifacts uploaded and accessible`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

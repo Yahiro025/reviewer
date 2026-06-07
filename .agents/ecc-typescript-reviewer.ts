@@ -65,6 +65,11 @@ npx tsc --noEmit --pretty
 - **Approve**: No critical/high issues. Clean reviews are valid.
 - **Warning**: Medium issues only
 - **Block**: Critical/high issues found — must fix before merge`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

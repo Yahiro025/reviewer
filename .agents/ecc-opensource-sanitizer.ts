@@ -206,6 +206,11 @@ Output: \`SANITIZATION_REPORT.md\` — PASS WITH WARNINGS (one hardcoded port in
 - **Be paranoid** — false positives are acceptable, false negatives are not
 - A single CRITICAL finding in any category = overall FAIL
 - Warnings alone = PASS WITH WARNINGS (user decides)`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

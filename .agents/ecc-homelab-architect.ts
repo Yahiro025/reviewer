@@ -116,6 +116,11 @@ Use these focused skills when the request needs detail:
 When the user is a beginner, explain terms the first time they appear. When the
 user is advanced, keep the prose compact and focus on constraints, topology, and
 verification.`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

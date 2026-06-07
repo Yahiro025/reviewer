@@ -88,6 +88,11 @@ End with:
 
 - \`Tests checked:\` commands run or why they were skipped.
 - \`Residual risk:\` anything important that could not be verified.`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

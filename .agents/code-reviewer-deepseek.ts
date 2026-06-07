@@ -79,6 +79,11 @@ After fixing all issues, output a brief summary:
   FIXED: <list of issues resolved>
   CLEAN: <confirmed passing checks>
   REMAINING: <anything that needs human attention> (or "none")`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

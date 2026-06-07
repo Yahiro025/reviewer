@@ -199,6 +199,11 @@ Read \`pom.xml\`, \`build.gradle\`, or \`build.gradle.kts\` to determine the bui
 For detailed patterns and examples:
 - **[SPRING]**: See \`skill: springboot-patterns\`
 - **[QUARKUS]**: See \`skill: quarkus-patterns\``,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

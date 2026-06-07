@@ -225,6 +225,11 @@ When reviewing AI-generated changes, prioritize:
 4. Unnecessary model-cost-inducing complexity
 
 Cost-awareness: Flag workflows that escalate to higher-cost models without clear reasoning need.`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

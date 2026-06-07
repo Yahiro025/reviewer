@@ -118,6 +118,11 @@ For testing guidelines, see skill: \`fsharp-testing\`.
 ---
 
 Review with the mindset: "Is this idiomatic F# that leverages the type system and functional patterns effectively?"`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

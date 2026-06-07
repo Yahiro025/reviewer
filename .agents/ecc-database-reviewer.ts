@@ -66,6 +66,11 @@ const definition: AgentDefinition = {
 - Missing RLS on tables with user data
 - Using service_role key in client-side code
 - Large transactions holding locks too long`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

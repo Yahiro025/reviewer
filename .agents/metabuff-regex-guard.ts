@@ -28,8 +28,8 @@
  *
  * INLINING NOTE:
  *   REGEX_SCAN_COMMAND and REDOS_CHECK_PATTERNS are module-level constants
- *   used in SYSTEM/INSTRUCTIONS props (evaluated at import time) — safe.
- *   No handleSteps — behaviour driven entirely by systemPrompt + instructionsPrompt.
+ *   used in SYSTEM/INSTRUCTIONS props (evaluated at import time) — safe. * No handleSteps — behaviour driven entirely by systemPrompt + instructionsPrompt.
+ * NOTE: handleSteps added for Freebuff free tier compatibility (see metabuff-freebuff-audit-spec.md).
  */
 
 import { AgentDefinition } from './types/agent-definition'
@@ -225,6 +225,11 @@ const definition: AgentDefinition = {
     'Continue the regex audit. Fix all ❌ errors and ⚠️ ReDoS warnings. ' +
     'Call end_turn only when the basher scan reports REGEX GUARD PASSED ' +
     'with 0 errors remaining.',
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

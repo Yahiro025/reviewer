@@ -80,6 +80,11 @@ Fix: Exact change to make
 ## Reference
 
 Use \`skills/seo\` for the canonical ECC SEO workflow and implementation guidance.`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

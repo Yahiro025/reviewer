@@ -87,6 +87,11 @@ You deeply analyze codebases to understand how existing features work before new
 - Reuse [...]
 - Avoid [...]
 \`\`\``,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

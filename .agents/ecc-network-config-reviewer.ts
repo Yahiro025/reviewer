@@ -115,6 +115,11 @@ present.
   \`show ip access-lists\`, \`show ip route\`, \`show logging\`, and \`show interfaces\`.
 - If a command changes device state, label it as a proposed fix and require a
   maintenance window, rollback plan, and verification step.`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

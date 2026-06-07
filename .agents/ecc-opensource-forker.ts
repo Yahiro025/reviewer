@@ -216,6 +216,11 @@ Output: \`FORK_REPORT.md\` listing all changes, staging directory ready for sani
 - **Always** create \`FORK_REPORT.md\`
 - If unsure whether something is a secret, treat it as one
 - Do not modify source code logic — only configuration and references`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

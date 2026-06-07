@@ -65,7 +65,6 @@ const definition: AgentDefinition = {
     'run_terminal_command',
     'spawn_agents',
     'think_deeply',
-    'find_files',
     'end_turn',
   ],
 
@@ -132,6 +131,11 @@ ${SECURITY_RED_FLAGS.map((_, i) => `   code_searcher searchQueries: [{ pattern: 
     'Continue the security work. ' +
     'Fix all vulnerabilities you have identified. ' +
     'Call end_turn only when all red flags are resolved and tests pass.',
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

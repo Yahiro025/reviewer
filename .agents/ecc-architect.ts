@@ -121,6 +121,11 @@ const definition: AgentDefinition = {
 - Premature Optimization — optimizing before measuring
 - Reinventing the Wheel — building instead of using proven solutions
 - Distributed Monolith — services that can't deploy independently`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

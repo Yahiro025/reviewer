@@ -119,6 +119,11 @@ For testing guidelines, see skill: \`csharp-testing\`.
 ---
 
 Review with the mindset: "Would this code pass review at a top .NET shop or open-source project?"`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

@@ -64,6 +64,11 @@ Define and enforce invariants for every autonomous loop:
 - Always have a fallback/escape path
 - Log progress at each iteration for audit trail
 - Return partial results on timeout — never lose work`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

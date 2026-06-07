@@ -101,6 +101,11 @@ You are a clinical informatics reviewer for healthcare software. Patient safety 
 - A single missed drug interaction is worse than a hundred false alarms
 - PHI exposure is always CRITICAL severity, regardless of how small the leak
 - Never approve code that silently catches CDSS errors`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

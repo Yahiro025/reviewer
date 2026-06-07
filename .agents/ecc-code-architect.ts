@@ -89,6 +89,11 @@ Order the implementation by dependency:
 1. Step 1
 2. Step 2
 \`\`\``,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

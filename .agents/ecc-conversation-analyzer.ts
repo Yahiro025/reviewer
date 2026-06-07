@@ -70,6 +70,11 @@ suggested_rule:
 \`\`\`
 
 Prioritize high-frequency, high-severity behaviors first.`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

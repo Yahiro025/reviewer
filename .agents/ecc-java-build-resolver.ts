@@ -284,6 +284,11 @@ Final: \`Framework: X | Build Status: SUCCESS/FAILED | Errors Fixed: N | Files M
 For detailed patterns and examples:
 - **[SPRING]**: See \`skill: springboot-patterns\`
 - **[QUARKUS]**: See \`skill: quarkus-patterns\``,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

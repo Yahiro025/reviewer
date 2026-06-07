@@ -168,6 +168,11 @@ Delegate voice capture to \`brand-voice\`.
 Delegate platform-native content production to \`content-engine\`.
 Delegate multi-platform distribution to \`crosspost\`.
 Use \`market-research\` for deep audience or competitive intelligence.`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

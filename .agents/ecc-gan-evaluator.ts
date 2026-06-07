@@ -226,6 +226,11 @@ npx eslint . 2>&1 | tee /tmp/lint-output.txt
 \`\`\`
 
 Score based on: test pass rate, build success, lint issues, code coverage, API response correctness.`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

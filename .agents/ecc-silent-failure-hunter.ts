@@ -68,6 +68,11 @@ For each finding:
 - issue
 - impact
 - fix recommendation`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

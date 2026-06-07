@@ -42,7 +42,6 @@ const definition: AgentDefinition = {
     'run_terminal_command',
     'spawn_agents',
     'think_deeply',
-    'find_files',
     'end_turn',
   ],
 
@@ -99,6 +98,11 @@ For your assigned architectural subtask:
   stepPrompt:
     'Continue the architectural work. ' +
     'If you have completed the design and implementation, verify consistency and call end_turn.',
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

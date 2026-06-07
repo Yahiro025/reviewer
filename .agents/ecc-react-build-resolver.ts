@@ -224,6 +224,11 @@ Final: \`Build Status: SUCCESS | Errors Fixed: N | Files Modified: <list>\` or \
 - Rules: \`rules/react/coding-style.md\`, \`rules/react/patterns.md\`
 - Skills: \`skills/react-patterns/\`, \`skills/frontend-patterns/\`
 - Commands: \`/react-build\`, \`/react-review\``,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

@@ -85,6 +85,11 @@ You receive a task description and optionally a list of relevant file paths.
   {"subtask": "Implement the business logic and API routes", "specialist": "base", "focus": "Core implementation"},
   {"subtask": "Write unit and integration tests", "specialist": "testgen", "focus": "Test coverage"}
 ]`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

@@ -176,6 +176,11 @@ Always include the file path and line number. Quote the offending snippet when i
 ---
 
 Review with the mindset: "Would this code pass review at a top React shop or well-maintained open-source library?"`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

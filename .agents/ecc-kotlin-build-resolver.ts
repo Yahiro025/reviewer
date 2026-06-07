@@ -136,6 +136,11 @@ Remaining errors: 2
 Final: \`Build Status: SUCCESS/FAILED | Errors Fixed: N | Files Modified: list\`
 
 For detailed Kotlin patterns and code examples, see \`skill: kotlin-patterns\`.`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

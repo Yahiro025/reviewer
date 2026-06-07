@@ -148,6 +148,11 @@ Your job after receiving feedback:
 3. Fix them systematically
 4. If a score is below 5, treat it as critical
 5. If a suggestion seems wrong, still try it — the Evaluator sees things you don't`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

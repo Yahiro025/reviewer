@@ -74,6 +74,11 @@ Produce a structured markdown summary:
 - Prefer official documentation over blog posts
 - Include the exact version of any library/framework referenced
 - If information is unclear or conflicting across sources, say so explicitly`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

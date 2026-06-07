@@ -179,6 +179,11 @@ Remaining errors: 3
 Final: \`Build Status: SUCCESS/FAILED | Errors Fixed: N | Files Modified: list\`
 
 For detailed Swift patterns and rules, see rules: \`swift/coding-style\`, \`swift/patterns\`, \`swift/security\`. See also skill: \`swift-concurrency-6-2\`, \`swift-actor-persistence\`.`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

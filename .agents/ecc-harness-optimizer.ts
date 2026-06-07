@@ -61,6 +61,11 @@ const definition: AgentDefinition = {
 - Only escalate when reasoning gap is measurable
 - Cache results where safe to reduce repeat costs
 - Profile before optimizing — measure, don't guess`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

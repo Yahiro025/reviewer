@@ -90,6 +90,11 @@ cmake --build build 2>&1 | head -50
 - **Block**: CRITICAL or HIGH issues found
 
 For detailed C++ coding standards and anti-patterns, see \`skill: cpp-coding-standards\`.`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

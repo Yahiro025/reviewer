@@ -63,6 +63,11 @@ Rate gaps by impact:
 2. critical gaps
 3. improvement suggestions
 4. positive observations`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

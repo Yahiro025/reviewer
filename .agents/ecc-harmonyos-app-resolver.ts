@@ -191,6 +191,11 @@ Created: ViewModel using @ObservedV2 with @Trace for observable properties, cons
 Final: \`Status: SUCCESS/NEEDS_WORK | Issues Found: N | Files Modified: list\`
 
 For detailed HarmonyOS patterns and code examples, refer to rule files in \`rules/arkts/\`.`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

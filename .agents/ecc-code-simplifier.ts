@@ -65,6 +65,11 @@ You simplify code while preserving functionality.
 2. identify simplification opportunities
 3. apply only functionally equivalent changes
 4. verify no behavioral change was introduced`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

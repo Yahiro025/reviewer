@@ -71,6 +71,11 @@ const definition: AgentDefinition = {
 - Use \`subprocess.run()\` over \`os.system()\`
 - Type hints with \`Optional[T]\` not \`T | None\` for < 3.10
 - \`__init__.py\` files present in packages`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition

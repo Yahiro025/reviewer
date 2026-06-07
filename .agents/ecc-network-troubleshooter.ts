@@ -137,6 +137,11 @@ Residual risk:
   management-plane restrictions.
 - If a live command changes state, label it clearly as a remediation step, not a
   diagnostic command.`,
+
+  // Programmatic control — required for Freebuff free tier agent loading
+  handleSteps: function* ({ prompt }) {
+    yield 'STEP_ALL'
+  },
 }
 
 export default definition
