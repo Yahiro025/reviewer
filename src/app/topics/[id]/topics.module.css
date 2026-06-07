@@ -188,3 +188,41 @@
   color: var(--accent-solid);
   flex-shrink: 0;
 }
+
+/* ── Mobile Responsiveness ────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .nav {
+    padding: 1rem;
+  }
+  
+  .header {
+    padding: 1.5rem 1rem;
+  }
+  
+  .tierList {
+    padding: 1rem;
+  }
+  
+  .tierRow {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
+  
+  .tierLabel {
+    padding-top: 0;
+    padding-bottom: 0.5rem;
+  }
+  
+  .challengeCard {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 0.6rem;
+  }
+  
+  .challengeStatus {
+    font-size: 0.75rem;
+    margin-top: 0.2rem;
+  }
+}
