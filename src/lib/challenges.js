@@ -276,18 +276,18 @@ int main() {
 
     return 0;
 }`,
-        exampleInput: "Enter numbers (one per line): 5, 10, 3, -3, -1",
+        exampleInput: "Enter numbers (one per line): 5, 10, -1",
         expectedOutput: "Sum: 15",
         hint: "Use a while loop: read the number at the top, check if it's -1 before adding.",
       },
       advanced: {
         id: "loops-advanced",
         title: "FizzBuzz",
-        description: "Print numbers from 1 to 50. For multiples of 3 print 'Fizz', for multiples of 5 print 'Buzz', for multiples of both print 'FizzBuzz', otherwise print the number.",
+        description: "Print numbers from 1 to 15. For multiples of 3 print 'Fizz', for multiples of 5 print 'Buzz', for multiples of both print 'FizzBuzz', otherwise print the number.",
         starterCode: `#include <stdio.h>
 
 int main() {
-    // TODO: Implement FizzBuzz for 1 to 50
+    // TODO: Implement FizzBuzz for 1 to 15
 
     return 0;
 }`,
@@ -472,7 +472,7 @@ int main() {
 
     return 0;
 }`,
-        expectedOutput: "sqrt(14.70) = 3.83\npow(14.70, 3.20) = 4528.47\nceil(14.70) = 15.00\nfloor(14.70) = 14.00\nfabs(-8.50) = 8.50\nfmod(14.70, 3.20) = 1.90",
+        expectedOutput: "sqrt(14.70) = 3.83\npow(14.70, 3.20) = 5437.70\nceil(14.70) = 15.00\nfloor(14.70) = 14.00\nfabs(-8.50) = 8.50\nfmod(14.70, 3.20) = 1.90",
         hint: "Use %.2f for all printf formats. Include math.h. pow(base, exp) returns double.",
       },
       advanced: {
@@ -499,7 +499,7 @@ int main() {
       expert: {
         id: "predefined-functions-expert",
         title: "Document Analyzer",
-        description: "Build a text analysis tool using a hardcoded paragraph. Implement these functions using string.h, ctype.h, and stdlib.h:\n1. wordCount(char *text) — count total words\n2. charFrequency(char *text) — count frequency of each vowel (a, e, i, o, u, case-insensitive)\n3. findLongestWord(char *text) — find and print the longest word\n4. replaceWord(char *text, char *old, char *new, char *result) — replace all occurrences of old with new in text\n5. extractNumbers(char *text) — find and print all numeric tokens\nUse strtok, strstr, strlen, strcpy, strcat, strcmp, isdigit, tolower extensively. Demonstrate all functions in main.",
+        description: "Build a text analysis tool using a hardcoded paragraph. Implement these functions using string.h, ctype.h, and stdlib.h:\n1. wordCount(char *text) — count total words\n2. charFrequency(char *text) — count frequency of each vowel (a, e, i, o, u, case-insensitive)\n3. findLongestWord(char *text) — find and print the longest word\n4. replaceWord(char *text, char *old, char *replacement, char *result) — replace all occurrences of old with replacement in text\n5. extractNumbers(char *text) — find and print all numeric tokens\nUse strtok, strstr, strlen, strcpy, strcat, strcmp, isdigit, tolower extensively. Demonstrate all functions in main.",
         starterCode: `#include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -508,7 +508,7 @@ int main() {
 int wordCount(char *text) { /* TODO: Count words with strtok */ }
 void charFrequency(char *text) { /* TODO: Count each vowel */ }
 void findLongestWord(char *text) { /* TODO: Find longest word */ }
-void replaceWord(char *text, char *old, char *new, char *result) { /* TODO: Replace all occurrences */ }
+void replaceWord(char *text, char *old, char *replacement, char *result) { /* TODO: Replace all occurrences */ }
 void extractNumbers(char *text) { /* TODO: Find numeric tokens */ }
 
 int main() {
@@ -516,7 +516,7 @@ int main() {
     // TODO: Demonstrate all 5 functions
     return 0;
 }`,
-        expectedOutput: "--- Word Count ---\nTotal words: 12\n\n--- Vowel Frequency ---\na: 2\ne: 4\ni: 2\no: 5\nu: 3\n\n--- Longest Word ---\nLongest: jumps (5 chars)\n\n--- Extract Numbers ---\nNumbers found: 3, 5, 2025",
+        expectedOutput: "--- Word Count ---\nTotal words: 13\n\n--- Vowel Frequency ---\na: 1\ne: 3\ni: 3\no: 4\nu: 2\n\n--- Longest Word ---\nLongest: quick (5 chars)\n\n--- Replace Word ---\nOriginal: The quick brown fox jumps over 3 lazy dogs 5 times in 2025\nReplaced: The quick brown cat jumps over 3 lazy dogs 5 times in 2025\n\n--- Extract Numbers ---\nNumbers found: 3, 5, 2025",
         hint: "Use strtok(text, ' ') to split into words. For replace, scan with strstr and build result string. For numbers, check each token character with isdigit().",
       },
     },
@@ -781,10 +781,15 @@ int main() {
         description: "Create a Book structure (title, author, int year). Declare an array of 3 books with hardcoded values. Loop through them and print the title of the book with the earliest publication year.",
         starterCode: `#include <stdio.h>
 
-// TODO: Define the Book structure
+struct Book { char title[100]; char author[100]; int year; };
 
 int main() {
-    // TODO: Declare array of 3 Books with hardcoded data
+    struct Book books[3] = {
+        {"The C Programming Language", "Kernighan & Ritchie", 1978},
+        {"Clean Code", "Robert C. Martin", 2008},
+        {"Design Patterns", "Gang of Four", 1994}
+    };
+
     // TODO: Find and print the title of the oldest book
     return 0;
 }`,
@@ -870,7 +875,7 @@ int main() {
     findLargestExpense(txns, 6);
     return 0;
 }`,
-        expectedOutput: "2025-01-15 | Salary           | Income      | +50000.00\n2025-01-16 | Rent Payment      | Housing     | -15000.00\n2025-01-17 | Groceries         | Food        |  -3500.50\n2025-01-18 | Freelance         | Income      |  +8000.00\n2025-01-19 | Restaurant        | Food        |  -1200.00\n2025-01-20 | Electric Bill     | Housing     |  -2800.00\n\nNet Balance: 35500.50\n\n--- Food Transactions ---\n2025-01-17 | Groceries         | Food        |  -3500.50\n2025-01-19 | Restaurant        | Food        |  -1200.00\n\n--- Largest Expense ---\nRent Payment: -15000.00",
+        expectedOutput: "2025-01-15 | Salary           | Income      | +50000.00\n2025-01-16 | Rent Payment      | Housing     | -15000.00\n2025-01-17 | Groceries         | Food        |  -3500.50\n2025-01-18 | Freelance         | Income      |  +8000.00\n2025-01-19 | Restaurant        | Food        |  -1200.00\n2025-01-20 | Electric Bill     | Housing     |  -2800.00\n\nNet Balance: 35499.50\n\n--- Food Transactions ---\n2025-01-17 | Groceries         | Food        |  -3500.50\n2025-01-19 | Restaurant        | Food        |  -1200.00\n\n--- Largest Expense ---\nRent Payment: -15000.00",
         hint: "For filterByCategory, use strcmp(). For largest expense, only check transactions where amount < 0. Use strcmp() for category matching.",
       },
     },
@@ -967,7 +972,7 @@ int main() {
     // TODO: Compute GPAs, print them, find Dean's List, print transcript
     return 0;
 }`,
-        expectedOutput: "--- Student GPAs ---\nAna Reyes: GPA 3.34\nBen Cruz: GPA 2.25\nCara Lim: GPA 3.85\n\n--- Dean's List (GPA >= 3.5) ---\nCara Lim — GPA 3.85\n\n--- Transcript: Ana Reyes (ID: 101) ---\nCS101 - Intro to Programming | 3 units | Grade: 3.50\nMATH201 - Calculus II | 4 units | Grade: 3.00\nENG101 - English Composition | 2 units | Grade: 3.70\nGPA: 3.34",
+        expectedOutput: "--- Student GPAs ---\nAna Reyes: GPA 3.32\nBen Cruz: GPA 2.25\nCara Lim: GPA 3.82\n\n--- Dean's List (GPA >= 3.5) ---\nCara Lim — GPA 3.82\n\n--- Transcript: Ana Reyes (ID: 101) ---\nCS101 - Intro to Programming | 3 units | Grade: 3.50\nMATH201 - Calculus II | 4 units | Grade: 3.00\nENG101 - English Composition | 2 units | Grade: 3.70\nGPA: 3.32",
         hint: "GPA = sum(grade * units) / sum(units). Use nested loops: outer for students, inner for their courses.",
       },
       expert: {
@@ -1006,7 +1011,7 @@ int main() {
     return 0;
 }`,
         expectedOutput: "--- Enrollment ---\nAna Reyes enrolled in CS101\nAna Reyes enrolled in MATH101\nCara Lim enrolled in CS201\nCara Lim enrolled in ENG101\n\n--- Ana's Schedule ---\nMon 09:00-10:30: CS101 (R101)\nMon 11:00-12:30: MATH101 (R201)\nWed 09:00-10:30: CS101 (R101)\nWed 11:00-12:30: MATH101 (R201)\nFri 11:00-12:00: MATH101 (R201)\n\n--- Course Load ---\nCS101: 1 enrolled\nCS201: 1 enrolled\nMATH101: 1 enrolled\nENG101: 1 enrolled",
-        hint: "For time conflicts: same day AND overlapping time ranges = conflict. Overlap check: start1 < end2 AND start2 < end1. Use strcmp for day and code matching.",
+        hint: "For time conflicts: same day AND overlapping time ranges = conflict. Overlap check: start1 < end2 AND start2 < end1. Use strcmp for day and code matching. For time strings in \"HH:MM\" format with leading zeros, strcmp works for ordering, but for the overlap check, parse hours and minutes as integers: overlap = (start1_h < end2_h || (start1_h == end2_h && start1_m < end2_m)) && same for the other direction.",
       },
     },
   },
@@ -1320,7 +1325,7 @@ int main() {
       intermediate: {
         id: "file-handling-intermediate",
         title: "Student File Writer",
-        description: "Create 3 Student structs (name, grade). Write all student data to 'students.txt', one student per line (name and grade separated by comma). Then read the file back and print each line.",
+        description: "Create 3 Student structs (name, grade). Write all student data to 'students.txt', one student per line in the format \"name,grade\" (no space after comma). Then read the file back line by line and print each line exactly as stored.",
         starterCode: `#include <stdio.h>
 
 typedef struct { char name[50]; int grade; } Student;
@@ -1339,7 +1344,7 @@ int main() {
       advanced: {
         id: "file-handling-advanced",
         title: "Word Frequency Analyzer",
-        description: "Create a text analysis tool. First, write a sample paragraph to 'input.txt' (at least 25 words with some repeated). Then implement the following: (1) Read the file word by word, (2) Count the frequency of each unique word (case-insensitive), (3) Write the frequency results sorted alphabetically to 'frequency.txt' in the format 'word: count', (4) Print to console the total word count and the top 3 most frequent words. Ignore punctuation and convert all words to lowercase.",
+        description: "Create a text analysis tool. First, write a sample paragraph to 'input.txt'. Then implement the following: (1) Read the file word by word, (2) Count the frequency of each unique word (case-insensitive), (3) Write the frequency results sorted alphabetically to 'frequency.txt' in the format 'word: count', (4) Print to console the total word count and the top 3 most frequent words. Print the top 3 words enclosed in single quotes, e.g., 'the' (3). Ignore punctuation and convert all words to lowercase.",
         starterCode: `#include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -1361,8 +1366,8 @@ int main() {
 
     return 0;
 }`,
-        expectedOutput: "Total words: 13\nTop 3: 'the' (3), 'cat' (2), 'sat' (2)",
-        hint: "Use fscanf(fp, \"%s\", word) to read words. For each word, check if it exists in your unique words array; if so increment count, otherwise add it. Use strcasecmp() or convert to lowercase before comparing.",
+        expectedOutput: "Total words: 12\nTop 3: 'the' (4), 'cat' (2), 'sat' (2)",
+        hint: "Use fscanf(fp, \"%s\", word) to read words. For each word, check if it exists in your unique words array; if so increment count, otherwise add it. Convert to lowercase before comparing.",
       },
       expert: {
         id: "file-handling-expert",
@@ -1402,8 +1407,8 @@ int main() {
 
     return 0;
 }`,
-        expectedOutput: "--- Gradebook Summary ---\nTotal Students: 5\nPassed: 3\nFailed: 2\nClass Average: 77.87",
-        hint: "Use fscanf with format: fscanf(fp, \"%[^,],%d,%d,%d\\n\", name, &m, &s, &e). Skip the header by reading it first. For status: strcpy(s.status, avg>=75 ? \"PASSED\" : \"FAILED\").",
+        expectedOutput: "--- Gradebook Summary ---\nTotal Students: 5\nPassed: 3\nFailed: 2\nClass Average: 77.73",
+        hint: "Use fgets to read each line, then sscanf with: sscanf(buffer, \"%49[^,],%d,%d,%d\", name, &m, &s, &e). Skip the header by reading it first with fgets. For status: strcpy(s.status, avg >= 75 ? \"PASSED\" : \"FAILED\").",
       },
     },
   },
