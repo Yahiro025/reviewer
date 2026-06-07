@@ -4,12 +4,15 @@
 
 function mapWandboxToPiston(data) {
   // Wandbox response format → Piston-compatible format
-  // Wandbox: { status, signal, compiler_output, compiler_error, program_output, program_error }
-  // Piston:   { run: { stdout, stderr, signal, code }, compile: { stdout, stderr, code, signal } }
-
-  const hasCompileError = !!(data.compiler_error || data.status === "1");
-  // A runtime failure is indicated by a non-empty program_error or a signal
-  const hasRunError = !!(data.program_error || data.signal);
+  
+  // A compiler error happens if gcc actually throws an error.
+  // If the user's C program simply `return 1;`, Wandbox sets status to "1" but compiler_error is empty.
+  const hasCompileError = !!(data.compiler_error && data.compiler_error.includes("error:"));
+  
+  // A runtime failure happens if the program crashes or returns a non-zero code.
+  // We parse the status to get the actual exit code.
+  const rawStatus = parseInt(data.status || "0", 10);
+  const isRuntimeNonZero = !hasCompileError && rawStatus !== 0;
 
   return {
     success: true,
@@ -22,9 +25,8 @@ function mapWandboxToPiston(data) {
     run: {
       stdout: data.program_output || "",
       stderr: data.program_error || "",
-      // run.code reflects runtime errors only (compile errors are in compile.code).
-      // When compilation fails the program never runs, so run.code stays 0.
-      code: hasRunError ? 1 : 0,
+      // If it failed to compile, run.code is null/0. Otherwise, pass the raw exit code.
+      code: hasCompileError ? 0 : rawStatus,
       signal: data.signal || null,
     },
   };
