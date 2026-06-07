@@ -605,3 +605,70 @@
   white-space: pre-wrap;
   margin: 0;
 }
+
+/* ── Mobile Responsiveness ────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar {
+    flex: 0 0 45%;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .workspace {
+    flex: 0 0 55%;
+  }
+
+  .terminalContainer {
+    height: 35%;
+  }
+
+  .topBar {
+    padding: 0 0.5rem;
+  }
+
+  .fileTabs {
+    display: none;
+  }
+
+  .topBarRight {
+    margin-left: auto;
+  }
+
+  .terminalHeader {
+    padding: 0.4rem 0.5rem;
+  }
+
+  .terminalCmd {
+    display: none;
+  }
+
+  .successModal {
+    padding: 1.5rem;
+  }
+
+  .successTitle {
+    font-size: 1.2rem;
+  }
+
+  .successStats {
+    padding: 0.8rem;
+    font-size: 0.65rem;
+  }
+
+  .actionBtnPrimary, .actionBtnSecondary {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.65rem;
+  }
+
+  .nextCta {
+    padding: 0.4rem 0.6rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+}
