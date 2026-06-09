@@ -142,7 +142,7 @@ searching: {
 - **title**: `"Binary Search in Sorted Array"`
 - **description**: `"Given a sorted array of 10 integers {2, 5, 8, 12, 16, 23, 38, 47, 56, 72} and a target value 47, implement binary search. Print the 0-based index if found, the number of comparisons made, or 'NOT FOUND' if not in the array."`
 - **starterCode**: Hardcode sorted array `{2, 5, 8, 12, 16, 23, 38, 47, 56, 72}`, target `47`. TODO: implement binary search with comparison counter.
-- **expectedOutput**: `"Found 47 at index 7 (3 comparisons)"`
+- **expectedOutput**: `"Found 47 at index 7 (2 comparisons)"`
 - **hint**: `"Use low=0, high=9. Each iteration: mid = (low+high)/2, compare, then adjust low or high. Count each comparison."`
 
 ### Tier: expert

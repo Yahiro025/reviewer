@@ -182,7 +182,7 @@ int main() {
 
     return 0;
 }`,
-        expectedOutput: "Found 47 at index 7 (3 comparisons)",
+        expectedOutput: "Found 47 at index 7 (2 comparisons)",
         hint: "Use low=0, high=9. Each iteration: mid = (low+high)/2, compare, then adjust low or high. Count each comparison.",
       },
       expert: {
