@@ -97,7 +97,7 @@ int main() {
 
     return 0;
 }`,
-        expectedOutput: "Class Average: 77.75\nHighest: 95 (Student 1)\nLowest: 55 (Student 8)\n--- Grade Distribution ---\nA (90-100): 2\nB (80-89): 2\nC (70-79): 2\nD (60-69): 1\nF (Below 60): 1\nStudents Above Average: 4",
+        expectedOutput: "Class Average: 77.75\nHighest: 95 (Student 1)\nLowest: 55 (Student 8)\n--- Grade Distribution ---\nA (90-100): 2\nB (80-89): 2\nC (70-79): 2\nD (60-69): 1\nF (Below 60): 1\nStudents Above Average: 5",
         hint: "Track positions using the loop index when updating highest/lowest. Use if-else chains for grade ranges.",
       },
     },
@@ -1096,7 +1096,7 @@ int main() {
     return 0;
 }`,
         exampleInput: "Enter a sentence: The quick brown fox",
-        expectedOutput: "Characters: 19\nWords: 4\nVowels: 7",
+        expectedOutput: "Characters: 19\nWords: 4\nVowels: 5",
         hint: "A new word starts when you encounter a non-space after a space.",
       },
       expert: {
@@ -1352,7 +1352,7 @@ int main() {
 int main() {
     // Create sample input
     FILE *fp = fopen("input.txt", "w");
-    fprintf(fp, "the cat sat on the mat the cat sat on the chair");
+    fprintf(fp, "the cat sat on the mat the cat sat in the chair");
     fclose(fp);
 
     char words[100][50];

@@ -1,0 +1,567 @@
+
+=== arrays-novice ===
+DESC: Declare an array of 5 integers with hardcoded values. Print only the first element and the last element.
+EXPECTED:
+10
+50
+
+=== arrays-beginner ===
+DESC: Given an array of 5 integers (some may be negative), write a loop to check each number. If the number is negative, replace it with 0. Print the final array, one element per line.
+EXPECTED:
+3
+0
+5
+0
+8
+
+=== arrays-intermediate ===
+DESC: Given an array of 10 integers, calculate the total sum of all even numbers and the total sum of all odd numbers. Print both sums, then print which is larger (or 'EQUAL' if they are the same).
+EXPECTED:
+Even Sum: 30
+Odd Sum: 25
+Even is larger
+
+=== arrays-advanced ===
+DESC: Write a program that reverses the elements of an array of 6 integers without using a second array. You must swap elements in-place. Print the original array, then the reversed array.
+EXPECTED:
+Original: 1 2 3 4 5 6
+Reversed: 6 5 4 3 2 1
+
+=== arrays-expert ===
+DESC: You are building an academic performance tool. Given an array of 8 student grades, implement the following in separate logical sections: (1) Compute and display the class average (2 decimal places), (2) Identify and display the highest and lowest grades with their positions (1-based index), (3) Generate a frequency distribution by grade range: A (90-100), B (80-89), C (70-79), D (60-69), F (below 60), (4) Count how many students scored above the average. Display all results with clear labels.
+EXPECTED:
+Class Average: 77.75
+Highest: 95 (Student 1)
+Lowest: 55 (Student 8)
+--- Grade Distribution ---
+A (90-100): 2
+B (80-89): 2
+C (70-79): 2
+D (60-69): 1
+F (Below 60): 1
+Students Above Average: 5
+
+=== searching-novice ===
+DESC: Given an array of 5 integers {10, 20, 30, 40, 50} and a target value 30, check if the target exists in the array. Print 'FOUND' if it exists, otherwise print 'NOT FOUND'.
+EXPECTED:
+FOUND
+
+=== searching-beginner ===
+DESC: Given an array of 6 integers {10, 20, 25, 30, 35, 40} and a target value 25, use linear search to find the target. Print the 0-based index if found, or 'NOT FOUND' if not.
+EXPECTED:
+Target 25 found at index 2
+
+=== searching-intermediate ===
+DESC: Given an array of 10 integers {3, 5, 7, 5, 9, 2, 5, 8, 1, 5} and a target value 5, count how many times the target appears and print all positions (1-based index).
+EXPECTED:
+Value 5 appears 4 times at positions: 2, 4, 7, 10
+
+=== searching-advanced ===
+DESC: Given a sorted array of 10 integers {2, 5, 8, 12, 16, 23, 38, 47, 56, 72} and a target value 47, implement binary search. Print the 0-based index if found, the number of comparisons made, or 'NOT FOUND' if not in the array.
+EXPECTED:
+Found 47 at index 7 (3 comparisons)
+
+=== searching-expert ===
+DESC: Build a student contact lookup system. Create a Student structure with fields: id (int), name (char[50]), phone (char[15]), course (char[30]). Use an array of 8 hardcoded students sorted by ID. Implement these functions:
+1. searchByID(int id) — binary search by student ID, print full details
+2. searchByName(char *name) — linear search, case-insensitive partial match using strstr()
+3. searchByCourse(char *course) — find all students in a given course
+4. compareSearchMethods() — search for the same ID using linear and binary search, print comparison count for each
+Demonstrate all functions in main with clear labels.
+EXPECTED:
+--- Search by ID (Binary) ---
+ID: 104 | Juan Dela Cruz | 09171234567 | Computer Science
+
+--- Search by Name ---
+Found: Ana Reyes (ID: 101)
+
+--- Students in Computer Science ---
+ID: 101 | Ana Reyes
+ID: 104 | Juan Dela Cruz
+ID: 107 | Maria Santos
+
+--- Search Method Comparison ---
+Linear search: 4 comparisons
+Binary search: 3 comparisons
+
+=== loops-novice ===
+DESC: Write a for loop that prints the numbers 1 through 10, each on a new line.
+EXPECTED:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+=== loops-beginner ===
+DESC: Ask the user for a number (use scanf). Print its multiplication table from 1 to 10 in the format: '5 x 1 = 5'.
+EXPECTED:
+5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+5 x 4 = 20
+5 x 5 = 25
+5 x 6 = 30
+5 x 7 = 35
+5 x 8 = 40
+5 x 9 = 45
+5 x 10 = 50
+
+=== loops-intermediate ===
+DESC: Write a program that continuously reads integers from the user. Stop when the user enters -1 (the sentinel value). Print the sum of all entered numbers (not including -1).
+EXPECTED:
+Sum: 15
+
+=== loops-advanced ===
+DESC: Print numbers from 1 to 15. For multiples of 3 print 'Fizz', for multiples of 5 print 'Buzz', for multiples of both print 'FizzBuzz', otherwise print the number.
+EXPECTED:
+1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+FizzBuzz
+
+=== loops-expert ===
+DESC: Print the first 6 rows of Pascal's Triangle. Each row must be generated mathematically using the previous row's values.
+EXPECTED:
+1
+1 1
+1 2 1
+1 3 3 1
+1 4 6 4 1
+1 5 10 10 5 1
+
+=== conditionals-novice ===
+DESC: Read one integer. Print 'POSITIVE' if it is greater than 0, 'NEGATIVE' if less than 0, or 'ZERO' if it equals 0.
+EXPECTED:
+POSITIVE
+
+=== conditionals-beginner ===
+DESC: Read a numeric grade (0-100). Print the letter grade: A (90-100), B (80-89), C (70-79), D (60-69), F (below 60).
+EXPECTED:
+B
+
+=== conditionals-intermediate ===
+DESC: Read a number 1-7. Use a switch statement to print the corresponding day (1=Monday, 7=Sunday). Print 'Invalid' for any other number.
+EXPECTED:
+Wednesday
+
+=== conditionals-advanced ===
+DESC: Read three integers representing sides of a triangle. First check if they can form a valid triangle (sum of any two sides > third). If valid, classify it as Equilateral, Isosceles, or Scalene.
+EXPECTED:
+Isosceles
+
+=== conditionals-expert ===
+DESC: Build a menu-driven calculator program with the following operations: (1) Addition, (2) Subtraction, (3) Multiplication, (4) Division, (5) Modulus (integers only), (6) Power (using a loop, no math.h). The program must: accept two numbers, perform the selected operation, handle division by zero, modulus by zero, and invalid choices gracefully, and loop until the user selects option 7 (Exit). Display results with 2 decimal places.
+EXPECTED:
+Result: 7.50
+Result: 12
+Exiting calculator.
+
+=== predefined-functions-novice ===
+DESC: Given a hardcoded character 'a', use ctype.h functions to check and print: whether it is a letter, whether it is a digit, whether it is uppercase, and print its uppercase version.
+EXPECTED:
+Character: 'a'
+Is letter: Yes
+Is digit: No
+Uppercase: A
+
+=== predefined-functions-beginner ===
+DESC: Given two hardcoded strings 'Hello' and 'World', use string.h functions to print: length of each string, concatenated result, comparison result (which comes first alphabetically), and whether 'World' is found inside the concatenated string.
+EXPECTED:
+Length of 'Hello': 5
+Length of 'World': 5
+Concatenated: HelloWorld
+'Hello' comes before 'World'
+'World' found in 'HelloWorld': Yes
+
+=== predefined-functions-intermediate ===
+DESC: Given two hardcoded numbers a=14.7 and b=3.2, use math.h to compute and print: sqrt(a), pow(a, b), ceil(a), floor(a), fabs(-8.5), and fmod(a, b). Print all results with 2 decimal places.
+EXPECTED:
+sqrt(14.70) = 3.83
+pow(14.70, 3.20) = 5437.70
+ceil(14.70) = 15.00
+floor(14.70) = 14.00
+fabs(-8.50) = 8.50
+fmod(14.70, 3.20) = 1.90
+
+=== predefined-functions-advanced ===
+DESC: Build a math quiz using hardcoded question pairs stored in two arrays. Use 5 fixed addition questions with numbers 1-50. Display each question, read the user's answer via scanf, track the score, and print a summary at the end with ✓ or ✗ for each answer.
+EXPECTED:
+Q1: 12 + 17 = ? Your answer: 29 ✓
+Q2: 8 + 34 = ? Your answer: 42 ✓
+Q3: 25 + 6 = ? Your answer: 31 ✓
+Q4: 3 + 45 = ? Your answer: 48 ✓
+Q5: 19 + 10 = ? Your answer: 29 ✓
+Score: 5/5 — EXCELLENT!
+
+=== predefined-functions-expert ===
+DESC: Build a text analysis tool using a hardcoded paragraph. Implement these functions using string.h, ctype.h, and stdlib.h:
+1. wordCount(char *text) — count total words
+2. charFrequency(char *text) — count frequency of each vowel (a, e, i, o, u, case-insensitive)
+3. findLongestWord(char *text) — find and print the longest word
+4. replaceWord(char *text, char *old, char *replacement, char *result) — replace all occurrences of old with replacement in text
+5. extractNumbers(char *text) — find and print all numeric tokens
+Use strtok, strstr, strlen, strcpy, strcat, strcmp, isdigit, tolower extensively. Demonstrate all functions in main.
+EXPECTED:
+--- Word Count ---
+Total words: 13
+
+--- Vowel Frequency ---
+a: 1
+e: 3
+i: 3
+o: 4
+u: 2
+
+--- Longest Word ---
+Longest: quick (5 chars)
+
+--- Replace Word ---
+Original: The quick brown fox jumps over 3 lazy dogs 5 times in 2025
+Replaced: The quick brown cat jumps over 3 lazy dogs 5 times in 2025
+
+--- Extract Numbers ---
+Numbers found: 3, 5, 2025
+
+=== functions-novice ===
+DESC: Write a function called greetUser() that takes no arguments and prints 'Welcome to C-LABS!'. Call it from main.
+EXPECTED:
+Welcome to C-LABS!
+
+=== functions-beginner ===
+DESC: Write a function getDiscount(float price) that returns a 10% discount value if the price is over 100, otherwise returns 0. Call it in main with a price of 150.00 and print the discount amount.
+EXPECTED:
+Discount: 15.00
+
+=== functions-intermediate ===
+DESC: Create two functions: celsiusToFahrenheit(float c) and fahrenheitToCelsius(float f). In main, convert 100°C to Fahrenheit and 98.6°F to Celsius. Print both results.
+EXPECTED:
+100.00C = 212.00F
+98.60F = 37.00C
+
+=== functions-advanced ===
+DESC: Write two recursive functions: factorial(int n) and fibonacci(int n). In main, print the factorial of 6 and the 8th Fibonacci number.
+EXPECTED:
+6! = 720
+Fibonacci(8) = 21
+
+=== functions-expert ===
+DESC: Build a complete menu-driven ATM system. Implement the following functions: (1) checkBalance() — display current balance, (2) deposit(float amount) — add funds and confirm, (3) withdraw(float amount) — deduct funds if sufficient, print error if not, (4) printMiniStatement() — show the last 3 transactions stored in global arrays. The main menu must loop until the user selects 'Exit'. Transaction history must be tracked automatically.
+EXPECTED:
+Deposit 500.00: Balance 1500.00
+Withdraw 200.00: Balance 1300.00
+--- Mini Statement ---
+1. Deposited: 500.00
+2. Withdrew: 200.00
+
+=== pointers-novice ===
+DESC: Declare an integer variable x = 42. Declare a pointer to it. Print the value of x using the pointer (dereference it).
+EXPECTED:
+Value via pointer: 42
+
+=== pointers-beginner ===
+DESC: Write a function swap(int *a, int *b) that swaps two integers using pointers. In main, declare two variables, call swap, and print before and after.
+EXPECTED:
+Before: x=5, y=10
+After: x=10, y=5
+
+=== pointers-intermediate ===
+DESC: Declare an array of 5 integers. Use a pointer to traverse the array and calculate the sum. Do NOT use array indexing (arr[i]) in your loop — use pointer arithmetic only.
+EXPECTED:
+Sum: 150
+
+=== pointers-advanced ===
+DESC: Write a function findMinMax(int *arr, int size, int *min, int *max) that finds both the minimum and maximum values in an array using pointers (pass-by-reference for min and max). Also write a function getAverage(int *arr, int size) that returns the average using pointer traversal. In main, print the min, max, and average.
+EXPECTED:
+Min: 1
+Max: 9
+Average: 5.00
+
+=== pointers-expert ===
+DESC: Build a string utility library using only pointer arithmetic (no array indexing). Implement three functions: (1) reverseString(char *str) — reverse in-place, (2) countVowels(char *str) — return the number of vowels (case-insensitive), (3) toUpperCase(char *str) — convert all letters to uppercase in-place. In main, demonstrate all three functions on the string 'Programming'.
+EXPECTED:
+Reversed: gnimmargorP
+Vowels: 3
+Uppercase: GNIMMARGORP
+
+=== structures-novice ===
+DESC: Define a structure Point with integer fields x and y. Declare a point, assign x=5 and y=10, then print both values.
+EXPECTED:
+Point: (5, 10)
+
+=== structures-beginner ===
+DESC: Create a structure Item with fields: int id, char name[50], float price. Declare one item (hardcode the values). Print the item details along with a computed Total Price that includes 12% tax.
+EXPECTED:
+ID: 1
+Name: Notebook
+Price: 50.00
+Total (with 12% tax): 56.00
+
+=== structures-intermediate ===
+DESC: Create a Book structure (title, author, int year). Declare an array of 3 books with hardcoded values. Loop through them and print the title of the book with the earliest publication year.
+EXPECTED:
+Oldest book: The C Programming Language
+
+=== structures-advanced ===
+DESC: Create an Athlete structure with fields: name (char[50]), jerseyNumber (int), sport (char[30]), and an array of 3 float scores. For an array of 5 athletes (hardcoded), implement the following: (1) calcAverages() — compute each athlete's average score, (2) findMVP() — find and display the athlete with the highest average (print all their details), (3) displayAll() — print a formatted table of all athletes with their averages. The output must match the expected format exactly.
+EXPECTED:
+--- Team Roster ---
+Jordan Cruz (#23) - Basketball - Avg: 25.00
+Alex Tan (#10) - Volleyball - Avg: 17.67
+Sam Reyes (#7) - Basketball - Avg: 28.33
+Jamie Lim (#14) - Swimming - Avg: 19.67
+Casey Go (#33) - Basketball - Avg: 12.33
+
+=== MOST VALUABLE PLAYER ===
+Sam Reyes (#7), Sport: Basketball, Average: 28.33
+
+=== structures-expert ===
+DESC: Build a finance tracking system using a Transaction structure with fields: date (char[11], format 'YYYY-MM-DD'), description (char[50]), category (char[20]), and amount (float, positive=income, negative=expense). Using an array of up to 6 hardcoded transactions, implement functions to: (1) displayAllTransactions() — print a formatted list, (2) computeNetBalance() — return total income minus total expenses, (3) filterByCategory(char *cat) — display only transactions of a given category, (4) findLargestExpense() — display the single largest expense transaction.
+EXPECTED:
+2025-01-15 | Salary           | Income      | +50000.00
+2025-01-16 | Rent Payment      | Housing     | -15000.00
+2025-01-17 | Groceries         | Food        |  -3500.50
+2025-01-18 | Freelance         | Income      |  +8000.00
+2025-01-19 | Restaurant        | Food        |  -1200.00
+2025-01-20 | Electric Bill     | Housing     |  -2800.00
+
+Net Balance: 35499.50
+
+--- Food Transactions ---
+2025-01-17 | Groceries         | Food        |  -3500.50
+2025-01-19 | Restaurant        | Food        |  -1200.00
+
+--- Largest Expense ---
+Rent Payment: -15000.00
+
+=== nested-structures-novice ===
+DESC: Define a Color structure with fields r, g, b (all int). Define a ColoredPoint structure with fields x (int), y (int), and c (Color). Create one ColoredPoint with x=3, y=7, and color RGB(255, 128, 0). Print the point coordinates and color values.
+EXPECTED:
+Point: (3, 7)
+Color: RGB(255, 128, 0)
+
+=== nested-structures-beginner ===
+DESC: Define an Address structure with fields: street[50], city[30], zipCode[10]. Define a Student structure with fields: name[50], grade (int), and addr (Address). Create one student: Ana Reyes, grade 92, address '123 Main St, Quezon City, 1100'. Print all details including the nested address.
+EXPECTED:
+Student: Ana Reyes
+Grade: 92
+Address: 123 Main St, Quezon City, 1100
+
+=== nested-structures-intermediate ===
+DESC: Define a Department structure with fields: deptName[30], floor (int). Define an Employee structure with fields: name[50], id (int), salary (float), dept (Department). Create 3 employees:
+- ID 101, Ana Reyes, 45000.00, Engineering, Floor 3
+- ID 102, Ben Cruz, 38000.00, Marketing, Floor 1
+- ID 103, Cara Lim, 52000.00, Engineering, Floor 3
+Print a formatted roster showing all employees. Then find and print the employee with the highest salary.
+EXPECTED:
+--- Employee Roster ---
+ID: 101 | Ana Reyes | 45000.00 | Engineering (Floor 3)
+ID: 102 | Ben Cruz | 38000.00 | Marketing (Floor 1)
+ID: 103 | Cara Lim | 52000.00 | Engineering (Floor 3)
+
+Highest Paid: Cara Lim — 52000.00
+
+=== nested-structures-advanced ===
+DESC: Define a Course structure with fields: code[10], title[50], units (int), grade (float). Define a Student structure with fields: name[50], id (int), courses[4] (Course array), courseCount (int), gpa (float). Create 3 students with 2-4 courses each:
+- Student 1: Ana Reyes (ID: 101) — CS101 (3 units, 3.5), MATH201 (4 units, 3.0), ENG101 (2 units, 3.7)
+- Student 2: Ben Cruz (ID: 102) — CS101 (3 units, 2.5), CS201 (3 units, 2.0)
+- Student 3: Cara Lim (ID: 103) — MATH201 (4 units, 3.8), CS201 (3 units, 3.9), ENG101 (2 units, 3.5), CS301 (3 units, 4.0)
+Implement:
+1. computeGPA() — weighted average: sum(grade * units) / sum(units)
+2. findDeansList() — print students with GPA >= 3.5
+3. printTranscript(int idx) — print full formatted transcript for student at index idx
+Demonstrate all functions in main.
+EXPECTED:
+--- Student GPAs ---
+Ana Reyes: GPA 3.32
+Ben Cruz: GPA 2.25
+Cara Lim: GPA 3.82
+
+--- Dean's List (GPA >= 3.5) ---
+Cara Lim — GPA 3.82
+
+--- Transcript: Ana Reyes (ID: 101) ---
+CS101 - Intro to Programming | 3 units | Grade: 3.50
+MATH201 - Calculus II | 4 units | Grade: 3.00
+ENG101 - English Composition | 2 units | Grade: 3.70
+GPA: 3.32
+
+=== nested-structures-expert ===
+DESC: Build a school enrollment system with nested structures:
+
+Schedule: day[10], startTime[6], endTime[6], room[10]
+Course: code[10], title[50], units (int), schedule[3] (Schedule array), scheduleCount (int)
+Student: name[50], id (int), courses[5] (Course array), courseCount (int)
+
+Create 4 students and 6 available courses with schedules. Implement:
+1. enrollStudent(Student *s, Course c) — add course if no time conflict and space available
+2. dropCourse(Student *s, char *code) — remove course by code
+3. printSchedule(Student *s) — display formatted weekly schedule with times and rooms
+4. findConflicts(Student students[], int n) — check all students for time conflicts
+5. departmentLoad(Student students[], int n) — count enrollments per course code
+
+Demonstrate enrollment, dropping, schedule printing, conflict detection, and load report in main.
+EXPECTED:
+--- Enrollment ---
+Ana Reyes enrolled in CS101
+Ana Reyes enrolled in MATH101
+Cara Lim enrolled in CS201
+Cara Lim enrolled in ENG101
+
+--- Ana's Schedule ---
+Mon 09:00-10:30: CS101 (R101)
+Mon 11:00-12:30: MATH101 (R201)
+Wed 09:00-10:30: CS101 (R101)
+Wed 11:00-12:30: MATH101 (R201)
+Fri 11:00-12:00: MATH101 (R201)
+
+--- Course Load ---
+CS101: 1 enrolled
+CS201: 1 enrolled
+MATH101: 1 enrolled
+ENG101: 1 enrolled
+
+=== strings-novice ===
+DESC: Declare a char array, store your name in it, and print a greeting in the format 'Hello, [name]!'.
+EXPECTED:
+Hello, Maria!
+
+=== strings-beginner ===
+DESC: Read a word. Print its length using strlen(). Then convert it to uppercase using toupper() and print it.
+EXPECTED:
+Length: 5
+Uppercase: HELLO
+
+=== strings-intermediate ===
+DESC: Read a word and check if it is a palindrome (reads the same forwards and backwards). Print 'PALINDROME' or 'NOT PALINDROME'.
+EXPECTED:
+PALINDROME
+
+=== strings-advanced ===
+DESC: Read a sentence (using fgets). Count and print: (1) total characters, (2) total words, (3) total vowels (a, e, i, o, u — case insensitive).
+EXPECTED:
+Characters: 19
+Words: 4
+Vowels: 7
+
+=== strings-expert ===
+DESC: Implement a Caesar cipher. Read a sentence and a shift value. Encrypt the message (shift letters only, preserve case and non-letters). Then decrypt it back and verify the original is restored.
+EXPECTED:
+Original: Hello World
+Encrypted: Khoor Zruog
+Decrypted: Hello World
+
+=== struct-arrays-novice ===
+DESC: Define a Contact structure (name, phone number as string). Declare an array of 2 contacts with hardcoded data. Print both contacts.
+EXPECTED:
+Contact 1: Juan Dela Cruz - 09171234567
+Contact 2: Maria Santos - 09281234567
+
+=== struct-arrays-beginner ===
+DESC: Create a Product structure (name, float price, int stock). Declare 3 products. Print all products, then print a warning for any product with stock below 5.
+EXPECTED:
+Pencil - 5.00 (100 left)
+Notebook - 35.00 (3 left)
+Eraser - 10.00 (2 left)
+LOW STOCK: Notebook
+LOW STOCK: Eraser
+
+=== struct-arrays-intermediate ===
+DESC: Create a Student structure (name, float gpa). Declare 5 students. Write a bubble sort function that sorts them by GPA in descending order. Print the ranked roster.
+EXPECTED:
+1. Dan - 3.90
+2. Ben - 3.80
+3. Eve - 3.60
+4. Ana - 3.50
+5. Cara - 3.20
+
+=== struct-arrays-advanced ===
+DESC: Create a Staff structure with fields: id (int), name (char[50]), role (char[30], e.g. 'Doctor', 'Nurse', 'Admin'), and float salary. With 5 hardcoded staff members, implement functions to: (1) displayAll() — print all staff in a formatted list, (2) findByID(int id) — search and print one staff member's full details, (3) updateSalary(int id, float newSalary) — update and confirm a staff member's salary, (4) computeRoleTotal(char *role) — calculate and return the total salary for a given role. Demonstrate all functions in main.
+EXPECTED:
+ID: 201 | Dr. Ana Reyes | Doctor | 85000.00
+ID: 202 | Ben Cruz, RN | Nurse | 45000.00
+ID: 203 | Dr. Cara Lim | Doctor | 92000.00
+ID: 204 | Dan Sy | Admin | 35000.00
+ID: 205 | Eve Go, RN | Nurse | 48000.00
+
+--- Find ID 203 ---
+Dr. Cara Lim, Role: Doctor, Salary: 92000.00
+
+Doctor Total Payroll: 177000.00
+
+--- After Salary Update ---
+Dan Sy, Role: Admin, Salary: 38000.00
+
+=== struct-arrays-expert ===
+DESC: Build a retail sales management system using a Sale structure with fields: date (char[11]), itemName (char[50]), category (char[20]), float unitPrice, and int quantity. Using arrays of structures (up to 10 hardcoded sales), implement: (1) listAllSales() — display all sales with computed total per item, (2) computeTotalRevenue() — return sum of all (unitPrice * quantity), (3) filterByCategory(char *cat) — display sales matching a category, (4) findBestSellingItem() — display the item with the highest quantity sold, (5) dailySalesReport(char *date) — show total revenue for a specific date.
+EXPECTED:
+2025-03-01 | Laptop Pro | Electronics | 45000.00 x 2 = 90000.00
+2025-03-01 | Mouse | Electronics | 1200.00 x 5 = 6000.00
+2025-03-02 | Notebook | School Supplies | 45.00 x 20 = 900.00
+2025-03-02 | Pen Set | School Supplies | 150.00 x 15 = 2250.00
+2025-03-03 | Keyboard | Electronics | 2500.00 x 3 = 7500.00
+2025-03-03 | Eraser | School Supplies | 25.00 x 30 = 750.00
+2025-03-04 | Monitor 24" | Electronics | 8500.00 x 1 = 8500.00
+2025-03-04 | Backpack | School Supplies | 1200.00 x 4 = 4800.00
+
+Total Revenue: 120700.00
+
+--- Electronics ---
+Laptop Pro (45000.00 x 2 = 90000.00)
+Mouse (1200.00 x 5 = 6000.00)
+Keyboard (2500.00 x 3 = 7500.00)
+Monitor 24" (8500.00 x 1 = 8500.00)
+
+--- Best Selling Item ---
+Eraser - 30 units sold
+
+--- Daily Report: 2025-03-02 ---
+Revenue: 3150.00
+
+=== file-handling-novice ===
+DESC: Open a file called 'output.txt' for writing. Write the line 'Hello, File!' to it. Close the file. Then open it again for reading and print its contents.
+EXPECTED:
+Hello, File!
+
+=== file-handling-beginner ===
+DESC: Write numbers 1 to 10 to a file 'numbers.txt', one per line. Then read the file and calculate their sum. Print 'Sum from file: X'.
+EXPECTED:
+Sum from file: 55
+
+=== file-handling-intermediate ===
+DESC: Create 3 Student structs (name, grade). Write all student data to 'students.txt', one student per line in the format "name,grade" (no space after comma). Then read the file back line by line and print each line exactly as stored.
+EXPECTED:
+Ana,90
+Ben,75
+Cara,85
+
+=== file-handling-advanced ===
+DESC: Create a text analysis tool. First, write a sample paragraph to 'input.txt'. Then implement the following: (1) Read the file word by word, (2) Count the frequency of each unique word (case-insensitive), (3) Write the frequency results sorted alphabetically to 'frequency.txt' in the format 'word: count', (4) Print to console the total word count and the top 3 most frequent words. Print the top 3 words enclosed in single quotes, e.g., 'the' (3). Ignore punctuation and convert all words to lowercase.
+EXPECTED:
+Total words: 12
+Top 3: 'the' (4), 'cat' (2), 'sat' (2)
+
+=== file-handling-expert ===
+DESC: Build a complete gradebook processing system. Create a CSV file 'gradebook.csv' with student records (Name, Math, Science, English scores). Implement: (1) Read all records from the CSV, (2) Compute each student's average, (3) Determine PASSED (avg >= 75) or FAILED status, (4) Write the enriched data to 'gradebook_out.csv' with columns: Name,Math,Science,English,Average,Status, (5) Print a summary to console showing: total students, number passed, number failed, and the class average of all student averages.
+EXPECTED:
+--- Gradebook Summary ---
+Total Students: 5
+Passed: 3
+Failed: 2
+Class Average: 77.73
